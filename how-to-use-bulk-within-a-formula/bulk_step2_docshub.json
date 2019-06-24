@@ -1,0 +1,78 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "crmSource",
+            "name": "crmSource",
+            "required": true,
+            "type": "elementInstance"
+        },
+        {
+            "key": "object",
+            "name": "object",
+            "required": true,
+            "type": "value"
+        },
+        {
+            "key": "target",
+            "name": "target",
+            "required": true,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": true,
+    "engine": "v3",
+    "id": 27201,
+    "name": "bulk step 2 - docs hub",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "isSuccess",
+            "onFailure": [],
+            "onSuccess": [
+                "generateMetadata"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "generateMetadata",
+            "onFailure": [],
+            "onSuccess": [
+                "streamBulkResults"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "streamBulkResults",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+                "downloadElementInstanceId": "${config.crmSource}",
+                "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+                "downloadMethod": "GET",
+                "uploadApi": "/files",
+                "uploadElementInstanceId": "${config.target}",
+                "uploadFormDataName": "",
+                "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
+                "uploadMethod": "POST",
+                "uploadQuery": "${steps.generateMetadata.path}"
+            },
+            "type": "elementRequestStream"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "isSuccess"
+            ],
+            "properties": {},
+            "type": "manual"
+        }
+    ]
+}

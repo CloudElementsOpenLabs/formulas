@@ -34,3 +34,6 @@ Flowcharts describing the formulas can be found [here](Flowchart-BulkStep1.html)
 
 For more information on how to use Cloud Elements, see our [help center](https://docs.cloud-elements.com)
 or our [support page](https://support.cloud-elements.com/hc/en-us).
+
+### Alternative Configuration:
+In some cases, you may want to upload the result from a bulk job to an element in the docs hub, like Google Drive.  To do so, replace `bulk_Step2.json` referenced above with [bulk_step2_docshub.json](bulk_step2_docshub.json).  This formula template is setup to work with Google Drive, if your docs hub element is not Google Drive, you will need to make adjustments based on the providers requirements (e.g. path, file name, etc).  Please note that the folder and filename are both configured in the step `generateMetadata`--adjust as needed for your use case.
