@@ -17,6 +17,8 @@ IMPORTANT NOTE: for these formulas to work, you must use a common resource! You 
 5. Create a formula instance for Bulk Step 2 and capture the ID of the created formula instance.  You will need to give the Bulk Step 1 formula the instance ID for the second formula. This will let the webhook trigger the correct formula when the bulk job is completed.
 
 ### Additional Information
-Flowcharts describing the formulas can be found [here](Flowchart-BulkStep1.html) and [here](Flowchart-BulkStep2.html).
+Flowcharts describing the formulas are linked below:
+* Example 1 - [here](Flowchart-BulkStep1.html) and [here](Flowchart-BulkStep2.html) 
+* Example 2 - [here](Flowchart-BulkStep1.html) and [here](Flowchart-BulkStep2-docs-hub.html) 
 
 For more information on how to use Cloud Elements, see our [help center](https://docs.cloud-elements.com) or our [support page](https://support.cloud-elements.com/hc/en-us).
