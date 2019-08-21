@@ -1,0 +1,170 @@
+{
+  "id": 57089,
+  "level": "organization",
+  "elementId": 1712,
+  "objectName": "expenseInvoice",
+  "vendorName": "Invoice",
+  "startDate": "2019-08-16 20:54:21.157474",
+  "fields": [
+    {
+      "type": "string",
+      "path": "currency",
+      "level": "organization",
+      "vendorPath": "currency.internalId"
+    },
+    {
+      "type": "string",
+      "path": "customform.internalId",
+      "level": "organization",
+      "vendorPath": "customForm.internalId",
+      "configuration": [
+        {
+          "type": "passThrough",
+          "properties": {
+            "toVendor": true,
+            "fromVendor": true
+          }
+        },
+        {
+          "type": "defaultValue",
+          "properties": {
+            "toVendor": "178"
+          }
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "path": "dueDate",
+      "level": "organization",
+      "vendorPath": "dueDate"
+    },
+    {
+      "type": "string",
+      "path": "entity",
+      "level": "organization",
+      "vendorPath": "entity.internalId",
+      "configuration": [
+        {
+          "type": "passThrough",
+          "properties": {
+            "toVendor": true,
+            "fromVendor": true
+          }
+        },
+        {
+          "type": "defaultValue",
+          "properties": {
+            "toVendor": "317"
+          }
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "path": "id",
+      "level": "organization",
+      "vendorPath": "internalId"
+    },
+    {
+      "type": "string",
+      "path": "item[*].amount",
+      "level": "organization",
+      "vendorPath": "itemList.item[*].amount"
+    },
+    {
+      "type": "string",
+      "path": "item[*].description",
+      "level": "organization",
+      "vendorPath": "itemList.item[*].description"
+    },
+    {
+      "type": "string",
+      "path": "item[*].id",
+      "level": "organization",
+      "vendorPath": "itemList.item[*].item.internalId"
+    },
+    {
+      "type": "string",
+      "path": "item[*].location",
+      "level": "organization",
+      "vendorPath": "itemList.item[*].location.internalId"
+    },
+    {
+      "type": "string",
+      "path": "item[*].quantity",
+      "level": "organization",
+      "vendorPath": "itemList.item[*].quantity"
+    },
+    {
+      "type": "string",
+      "path": "message",
+      "level": "organization",
+      "vendorPath": "message"
+    },
+    {
+      "type": "string",
+      "path": "shippingCost",
+      "level": "organization",
+      "vendorPath": "shippingCost",
+      "configuration": [
+        {
+          "type": "passThrough",
+          "properties": {
+            "toVendor": true,
+            "fromVendor": true
+          }
+        },
+        {
+          "type": "defaultValue",
+          "properties": {
+            "toVendor": "1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "path": "subsidiary",
+      "level": "organization",
+      "vendorPath": "subsidiary.internalId",
+      "configuration": [
+        {
+          "type": "passThrough",
+          "properties": {
+            "toVendor": true,
+            "fromVendor": true
+          }
+        },
+        {
+          "type": "defaultValue",
+          "properties": {
+            "toVendor": "1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "path": "transactionDate",
+      "level": "organization",
+      "vendorPath": "tranDate"
+    }
+  ],
+  "configuration": [
+    {
+      "type": "inherit"
+    },
+    {
+      "type": "addToDocumentation"
+    },
+    {
+      "type": "passThrough",
+      "properties": {
+        "fromVendor": false,
+        "toVendor": false
+      }
+    }
+  ],
+  "isLegacy": false
+}

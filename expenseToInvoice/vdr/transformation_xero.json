@@ -1,0 +1,76 @@
+{
+  "id": 57088,
+  "level": "organization",
+  "elementId": 41,
+  "objectName": "expenseInvoice",
+  "vendorName": "invoice",
+  "startDate": "2019-08-16 20:51:36.847308",
+  "fields": [
+    {
+      "type": "string",
+      "path": "currency",
+      "level": "organization",
+      "vendorPath": "CurrencyCode"
+    },
+    {
+      "type": "string",
+      "path": "dueDate",
+      "level": "organization",
+      "vendorPath": "DueDate"
+    },
+    {
+      "type": "string",
+      "path": "entity",
+      "level": "organization",
+      "vendorPath": "Contact.Name"
+    },
+    {
+      "type": "string",
+      "path": "id",
+      "level": "organization",
+      "vendorPath": "InvoiceID"
+    },
+    {
+      "type": "string",
+      "path": "item[*].accountCode",
+      "level": "organization",
+      "vendorPath": "LineItems[*].AccountCode"
+    },
+    {
+      "type": "string",
+      "path": "item[*].amount",
+      "level": "organization",
+      "vendorPath": "LineItems[*].LineAmount"
+    },
+    {
+      "type": "string",
+      "path": "item[*].description",
+      "level": "organization",
+      "vendorPath": "LineItems[*].Description"
+    },
+    {
+      "type": "string",
+      "path": "item[*].id",
+      "level": "organization",
+      "vendorPath": "LineItems[*].LineItemID"
+    },
+    {
+      "type": "string",
+      "path": "item[*].quantity",
+      "level": "organization",
+      "vendorPath": "LineItems[*].Quantity"
+    },
+    {
+      "type": "string",
+      "path": "transactionDate",
+      "level": "organization",
+      "vendorPath": "Date"
+    }
+  ],
+  "configuration": [
+    {
+      "type": "inherit"
+    }
+  ],
+  "isLegacy": false
+}
