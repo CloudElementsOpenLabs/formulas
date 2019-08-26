@@ -9,6 +9,7 @@ Included in this folder:
 1. Import the formula into your Cloud Elements environment
 2. Create an instance of the formula and a source element instance (the template was built using Quickbooks Online)
 3. Trigger the formula
+  - In the Cloud Elements UI, toggle the formula to debugging mode, select your formula instance, add your trigger payload (example below), and click 'run'.
 
 For ease of testing, the formula was configured with a manual trigger that expects a payload for querying:
 ```
