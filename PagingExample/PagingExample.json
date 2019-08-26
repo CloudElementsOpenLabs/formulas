@@ -1,0 +1,88 @@
+[
+  {
+    "id": 29072,
+    "name": "Paging Example",
+    "userId": 3962,
+    "accountId": 4157,
+    "createdDate": "2019-08-26T14:33:26Z",
+    "steps": [
+      {
+        "id": 207854,
+        "onSuccess": [
+          "getInvoices"
+        ],
+        "onFailure": [],
+        "name": "buildQuery",
+        "type": "script",
+        "properties": {
+          "body": "let query = {};\n\nquery.where = `txnDate>='${trigger.args.startDate}' AND txnDate<='${trigger.args.endDate}'`;\n\nif (steps.getInvoices) {\n  query.nextPage = steps.getInvoices.response.headers[\"elements-next-page-token\"] || steps.getInvoices.response.headers[\"Elements-Next-Page-Token\"];\n}\n\ndone({ query });"
+        }
+      },
+      {
+        "id": 207855,
+        "onSuccess": [
+          "processInvoices"
+        ],
+        "onFailure": [],
+        "name": "getInvoices",
+        "type": "elementRequest",
+        "properties": {
+          "elementInstanceId": "${config.source}",
+          "query": "${steps.buildQuery.query}",
+          "method": "GET",
+          "api": "/invoices"
+        }
+      },
+      {
+        "id": 207857,
+        "onSuccess": [],
+        "onFailure": [
+          "buildQuery"
+        ],
+        "name": "isLastPage",
+        "type": "filter",
+        "properties": {
+          "body": "done(steps.getInvoices.response.body.length === 0);"
+        }
+      },
+      {
+        "id": 207856,
+        "onSuccess": [
+          "isLastPage"
+        ],
+        "onFailure": [],
+        "name": "processInvoices",
+        "type": "script",
+        "properties": {
+          "body": "/* Process the invoices from getInvoices\n  This could be accumulating the results, posting to a destination system, etc.\n*/\ndone();"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 25726,
+        "onSuccess": [
+          "buildQuery"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "singleThreaded": false,
+    "debugLoggingEnabled": true,
+    "configuration": [
+      {
+        "id": 52548,
+        "key": "source",
+        "name": "source",
+        "type": "elementInstance",
+        "required": true
+      }
+    ]
+  }
+]
