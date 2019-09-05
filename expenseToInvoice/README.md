@@ -32,7 +32,7 @@ Find the example payload attached but in general follows the following structure
     "Project Code": string,
     "Description": string,
     "Expense Date": date (dd/mm/yyyy),
-    "Submission Date": date (dd/mm/yyyy),
+    "Submission Date": date (dd/mm/yyyy),4
     "Gross Amount": number,
     "Tax Amount": number,
     "Net Amount": number,
@@ -56,4 +56,5 @@ This formula posts multiple invoices to the ERP system of choice and uses the ve
 For the example payload you should expect 6 invoices to be created and 1 to fail.  The failure is due to the negative value on Anothny's expense and will result into 
 *"resultError": "Bad request: ERROR|USER_ERROR|Inventory items must have a positive amount.,WARN|WARNING|Inventory items must have a positive amount.,WARN|WARNING|The line total amount is not equal to the item price times the quantity.  Is this correct?, [Request: 5d70ff69e4b0c40727f73f9f]"*
 
-
+#Video
+Find this video overview to see the formula in action https://cl.ly/fe39cf3e88d6 
