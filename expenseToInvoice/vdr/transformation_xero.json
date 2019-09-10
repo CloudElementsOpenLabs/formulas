@@ -70,6 +70,16 @@
   "configuration": [
     {
       "type": "inherit"
+    },
+    {
+      "type": "addToDocumentation"
+    },
+    {
+      "type": "passThrough",
+      "properties": {
+        "fromVendor": false,
+        "toVendor": false
+      }
     }
   ],
   "isLegacy": false
