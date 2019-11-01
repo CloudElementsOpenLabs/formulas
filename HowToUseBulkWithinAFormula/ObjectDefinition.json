@@ -1,24 +1,21 @@
 {
-  "fields": [
+  "objectName": "MyContact",
+  "fields": [{
+      "type": "string",
+      "path": "addressInfo.country",
+      "displayName": ""
+    },
     {
       "type": "string",
       "path": "firstName"
     },
     {
       "type": "string",
-      "path": "lastName"
+      "path": "addressInfo.street"
     },
     {
       "type": "string",
-      "path": "My_addressInfo.My_state"
-    },
-    {
-      "type": "string",
-      "path": "My_addressInfo.My_zip"
-    },
-    {
-      "type": "string",
-      "path": "My_addressInfo.My_street"
+      "path": "addressInfo.zip"
     },
     {
       "type": "string",
@@ -26,11 +23,24 @@
     },
     {
       "type": "string",
-      "path": "My_addressInfo.My_city"
+      "path": "addressInfo.city"
+    },
+    {
+      "type": "string",
+      "path": "lastName"
+    },
+    {
+      "type": "string",
+      "path": "addressInfo.state"
     },
     {
       "type": "string",
       "path": "email"
+    },
+    {
+      "type": "string",
+      "path": "phone",
+      "displayName": ""
     }
   ],
   "level": "organization"
