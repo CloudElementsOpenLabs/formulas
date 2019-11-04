@@ -1,36 +1,32 @@
 {
-  "id": 5208,
   "name": "Bulk Step 1",
   "description": "Start a bulk download from an element",
-  "userId": 8011,
-  "accountId": 8125,
-  "createdDate": "2018-01-25T04:51:12Z",
   "steps": [{
-    "id": 53563,
-    "onSuccess": ["createBulkJob"],
-    "onFailure": [],
-    "name": "createQuery",
-    "type": "script",
-    "properties": {
-      "body": "done({\n  \"body\":{\n    \"query\":\"select * from \" + config.object,\n    \"headerData\": {\n      \"order\": \"asc\"\n    }\n  },\n  \"headers\":{\n    \"Elements-Async-Callback-Url\":\"/formulas/instances/\" + config.secondformulainstanceid + \"/executions\",\n  },\n});"
-    }
-  }, {
-    "id": 53564,
+    "id": 241206,
     "onSuccess": [],
     "onFailure": [],
     "name": "createBulkJob",
     "type": "elementRequest",
     "properties": {
-      "body": "${steps.createQuery.body}",
       "method": "POST",
-      "elementInstanceId": "${config.crm.source}",
-      "api": "/bulk/query",
+      "headers": "${steps.createQuery.headers}",
+      "body": "${steps.createQuery.body}",
       "query": "",
-      "headers": "${steps.createQuery.headers}"
+      "api": "/bulk/query",
+      "elementInstanceId": "${config.crm.source}"
+    }
+  }, {
+    "id": 241205,
+    "onSuccess": ["createBulkJob"],
+    "onFailure": [],
+    "name": "createQuery",
+    "type": "script",
+    "properties": {
+      "body": "done({\n  \"body\":{\n    \"query\": `select * from ${config.object} limit 100`,\n    \"headerData\": {\n      \"order\": \"asc\"\n    }\n  },\n  \"headers\":{\n    \"Elements-Async-Callback-Url\": `/formulas/instances/${config.secondformulainstanceid}/executions`,\n  },\n});"
     }
   }],
   "triggers": [{
-    "id": 4697,
+    "id": 27510,
     "onSuccess": ["createQuery"],
     "onFailure": [],
     "type": "scheduled",
@@ -40,31 +36,32 @@
       "cron": "${config.cron}"
     }
   }],
+  "engine": "v3",
   "active": true,
-  "singleThreaded": false,
   "debugLoggingEnabled": true,
+  "singleThreaded": false,
   "configuration": [{
-    "id": 15740,
+    "id": 57641,
     "key": "crm.source",
     "name": "CRM Source",
     "type": "elementInstance",
     "description": "Source CRM instance to take updates from and push into Act-On",
     "required": true
   }, {
-    "id": 15741,
+    "id": 57642,
     "key": "cron",
     "name": "cron",
     "type": "value",
     "required": true
   }, {
-    "id": 15742,
+    "id": 57643,
     "key": "object",
     "name": "object",
     "type": "value",
     "description": "Which object to pull from the CRM (contacts, accounts, CustomContact, etc.)",
     "required": true
   }, {
-    "id": 15743,
+    "id": 57644,
     "key": "secondformulainstanceid",
     "name": "SecondFormulaInstanceId",
     "type": "value",

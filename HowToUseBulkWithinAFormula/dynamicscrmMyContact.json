@@ -1,77 +1,73 @@
 {
+  "id": 63801,
   "level": "organization",
+  "elementId": 361,
   "objectName": "MyContact",
   "vendorName": "contact",
-  "startDate": "2015-11-19 21:38:34.360456",
-  "fields": [
-    {
-      "path": "My_id",
-      "vendorPath": "attributes.contactid",
+  "fields": [{
+      "path": "id",
       "level": "organization",
-      "configuration": [
-        {
-          "type": "passThrough",
-          "properties": {
-            "fromVendor": true,
-            "toVendor": false
-          }
+      "vendorPath": "attributes.contactid",
+      "configuration": [{
+        "type": "passThrough",
+        "properties": {
+          "fromVendor": true,
+          "toVendor": false
         }
-      ]
+      }]
     },
     {
-      "path": "My_firstName",
-      "vendorPath": "attributes.firstname",
-      "level": "organization"
+      "path": "firstName",
+      "level": "organization",
+      "vendorPath": "attributes.firstname"
     },
     {
-      "path": "My_lastName",
-      "vendorPath": "attributes.lastname",
-      "level": "organization"
+      "path": "lastName",
+      "level": "organization",
+      "vendorPath": "attributes.lastname"
     },
     {
-      "path": "My_email",
-      "vendorPath": "attributes.emailaddress1",
-      "level": "organization"
+      "path": "email",
+      "level": "organization",
+      "vendorPath": "attributes.emailaddress1"
     },
     {
-      "path": "My_phone",
-      "vendorPath": "attributes.mobilephone",
-      "level": "organization"
+      "path": "phone",
+      "level": "organization",
+      "vendorPath": "attributes.mobilephone"
     },
     {
-      "path": "My_addressInfo.My_city",
-      "vendorPath": "attributes.address1_city",
-      "level": "organization"
+      "path": "addressInfo.city",
+      "level": "organization",
+      "vendorPath": "attributes.address1_city"
     },
     {
-      "path": "My_addressInfo.My_state",
-      "vendorPath": "attributes.address1_stateorprovince",
-      "level": "organization"
+      "path": "addressInfo.state",
+      "level": "organization",
+      "vendorPath": "attributes.address1_stateorprovince"
     },
     {
-      "path": "My_addressInfo.My_zip",
-      "vendorPath": "attributes.address1_postalcode",
-      "level": "organization"
+      "path": "addressInfo.zip",
+      "level": "organization",
+      "vendorPath": "attributes.address1_postalcode"
     },
     {
-      "path": "My_addressInfo.My_country",
-      "vendorPath": "attributes.address1_country",
-      "level": "organization"
+      "path": "addressInfo.country",
+      "level": "organization",
+      "vendorPath": "attributes.address1_country"
     },
     {
-      "path": "My_addressInfo.My_street",
-      "vendorPath": "attributes.address1_line1",
-      "level": "organization"
+      "path": "addressInfo.street",
+      "level": "organization",
+      "vendorPath": "attributes.address1_line1"
     }
   ],
-  "configuration": [
-    {
-      "type": "passThrough",
-      "properties": {
-        "fromVendor": false,
-        "toVendor": false
-      }
+  "configuration": [{
+    "type": "passThrough",
+    "properties": {
+      "fromVendor": false,
+      "toVendor": false
     }
-  ],
+  }],
   "isLegacy": true
 }

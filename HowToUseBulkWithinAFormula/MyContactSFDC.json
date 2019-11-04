@@ -1,62 +1,55 @@
 {
   "level": "organization",
+  "elementId": 23,
   "objectName": "MyContact",
   "vendorName": "Contact",
-  "startDate": "2017-07-07 19:00:10.759064",
-  "fields": [
-    {
+  "fields": [{
       "path": "email",
-      "vendorPath": "Email",
-      "level": "organization"
+      "level": "organization",
+      "vendorPath": "Email"
     },
     {
       "path": "id",
-      "vendorPath": "Id",
-      "level": "organization"
+      "level": "organization",
+      "vendorPath": "Id"
     },
     {
       "path": "firstName",
-      "vendorPath": "FirstName",
-      "level": "organization"
+      "level": "organization",
+      "vendorPath": "FirstName"
     },
     {
       "path": "lastName",
-      "vendorPath": "LastName",
-      "level": "organization"
+      "level": "organization",
+      "vendorPath": "LastName"
     },
     {
-      "path": "addressInfo.MailingCity",
-      "vendorPath": "MailingCity",
-      "level": "organization"
+      "path": "addressInfo.city",
+      "level": "organization",
+      "vendorPath": "MailingCity"
     },
     {
-      "path": "addressInfo.MailingPostalCode",
-      "vendorPath": "MailingPostalCode",
-      "level": "organization"
+      "path": "addressInfo.zip",
+      "level": "organization",
+      "vendorPath": "MailingPostalCode"
     },
     {
-      "path": "addressInfo.MailingStreet",
-      "vendorPath": "MailingStreet",
-      "level": "organization"
+      "path": "addressInfo.street",
+      "level": "organization",
+      "vendorPath": "MailingStreet"
     },
     {
-      "path": "addressInfo.MailingCountry",
-      "vendorPath": "MailingCountry",
-      "level": "organization"
+      "path": "addressInfo.country",
+      "level": "organization",
+      "vendorPath": "MailingCountry"
     },
     {
-      "path": "addressInfo.MailingState",
-      "vendorPath": "MailingState",
-      "level": "organization"
-    },
-    {
-      "path": "Acquisition_Outbound_User__c",
-      "vendorPath": "Acquisition_Outbound_User__c",
-      "level": "organization"
+      "path": "addressInfo.state",
+      "level": "organization",
+      "vendorPath": "MailingState"
     }
   ],
-  "configuration": [
-    {
+  "configuration": [{
       "type": "passThrough",
       "properties": {
         "fromVendor": false,

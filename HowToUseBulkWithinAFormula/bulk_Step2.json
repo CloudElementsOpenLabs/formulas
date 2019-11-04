@@ -1,29 +1,17 @@
 {
-  "id": 5209,
   "name": "Bulk Step 2",
   "description": "Receives the data stream from Step 1 and sends to Act-On",
-  "userId": 8011,
-  "accountId": 8125,
-  "createdDate": "2018-01-25T04:54:39Z",
   "steps": [{
-    "id": 53567,
-    "onSuccess": [],
+    "id": 241209,
+    "onSuccess": ["streamBulkResults"],
     "onFailure": [],
-    "name": "streamBulkResults",
-    "type": "elementRequestStream",
+    "name": "generateMetadata",
+    "type": "script",
     "properties": {
-      "downloadElementInstanceId": "${config.crm.source}",
-      "uploadApi": "/bulk/${config.object}",
-      "uploadElementInstanceId": "${config.target}",
-      "uploadMethod": "POST",
-      "uploadFormData": "",
-      "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
-      "downloadMethod": "GET",
-      "uploadFormDataName": "",
-      "downloadHeaders": "${steps.generateMetadata.downloadHeaders}"
+      "body": "\nlet downloadHeaders = {\n  \"Accept\":\"text/csv\"\n};\n\ndone({\n  \"downloadHeaders\": downloadHeaders\n});\n "
     }
   }, {
-    "id": 53566,
+    "id": 241208,
     "onSuccess": ["generateMetadata"],
     "onFailure": [],
     "name": "isSuccess",
@@ -32,17 +20,25 @@
       "body": "let status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
     }
   }, {
-    "id": 53565,
-    "onSuccess": ["streamBulkResults"],
+    "id": 241207,
+    "onSuccess": [],
     "onFailure": [],
-    "name": "generateMetadata",
-    "type": "script",
+    "name": "streamBulkResults",
+    "type": "elementRequestStream",
     "properties": {
-      "body": "\nlet downloadHeaders = {\n  \"Accept\":\"text/csv\"\n};\n\ndone({\n  \"downloadHeaders\": downloadHeaders\n});\n "
+      "uploadFormData": "",
+      "uploadMethod": "POST",
+      "uploadElementInstanceId": "${config.target}",
+      "uploadFormDataName": "",
+      "downloadMethod": "GET",
+      "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+      "downloadElementInstanceId": "${config.crm.source}",
+      "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+      "uploadApi": "/bulk/${config.object}"
     }
   }],
   "triggers": [{
-    "id": 4698,
+    "id": 27511,
     "onSuccess": ["isSuccess"],
     "onFailure": [],
     "type": "manual",
@@ -50,25 +46,26 @@
     "name": "trigger",
     "properties": {}
   }],
+  "engine": "v3",
   "active": true,
-  "singleThreaded": false,
   "debugLoggingEnabled": true,
+  "singleThreaded": false,
   "configuration": [{
-    "id": 15745,
+    "id": 57645,
     "key": "crm.source",
     "name": "CRM Source",
     "type": "elementInstance",
     "description": "The CRM source instance",
     "required": true
   }, {
-    "id": 15748,
+    "id": 57646,
     "key": "object",
     "name": "object",
     "type": "value",
     "description": "Object to transfer (contacts, accounts, CustomContact, etc.)",
     "required": true
   }, {
-    "id": 15744,
+    "id": 57647,
     "key": "target",
     "name": "target",
     "type": "elementInstance",
