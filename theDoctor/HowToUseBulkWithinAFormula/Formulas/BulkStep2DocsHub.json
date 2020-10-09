@@ -16,7 +16,7 @@
         "name": "generateMetadata",
         "type": "script",
         "properties": {
-          "body": "const downloadHeaders = {\n  'Accept':'application/json'\n};\n\nconst uploadHeaders = {\n  'Content-Type': 'multipart/form-data'\n};\n\nconst path = {\n  path: `/Test/${trigger.args.id}.${trigger.args.fileFormat}`\n};\n\ndone({ downloadHeaders, uploadHeaders, path });"
+          "body": "const downloadHeaders = {\n  'Accept':'text/csv'\n};\n\nconst uploadHeaders = {\n  'Content-Type': 'multipart/form-data'\n};\n\nconst path = {\n  path: `/Test/${trigger.args.id}.${trigger.args.fileFormat}`\n};\n\ndone({ downloadHeaders, uploadHeaders, path });"
         }
       },
       {

@@ -25,6 +25,6 @@ Included in this folder is [loopStepAggregation.json](loopStepAggregation.json),
 
 **A few things to note:**
 * You will need an authenticated Element instance with a GET /contacts API (endpoint). You can authenticate one in the UI.
-* Your Element needs to return a field called **Name**. Altenatively, you can update the javascript step called `aggregator` to refer to a field that does exist on the API you choose (i.e. for Zoho CRM v2, the field **Full_Name** could be used instead). You can update this step easily in the Formula UI.
+* Your Element needs to return a field called **Name**. Alternatively, you can update the javascript step called `aggregator` to refer to a field that exists on the API you choose (i.e. for Zoho CRM v2, the field **Full_Name** could be used instead). You can update this step easily in the Formula UI.
 * There is no paging in this formula. If you have over 200 contacts your final array will be an array of 200 names since the page size defaults to 200.
-* The formula will be slow if you have a lot of contacts, and you might need to click the "CONTINUE POLLING" button in the steps pane after receiving a yellow warning message that the formula has stopped polling for results. This is expected as it is just a simple formula that you would need to edit and add your own logic to.
+* The formula will be slow if you have a lot of contacts, and you might need to click the `CONTINUE POLLING` button in the steps pane after receiving a yellow warning message that the formula has stopped polling for results. This is expected as it is just a simple formula that you would need to edit and add your own logic to.
