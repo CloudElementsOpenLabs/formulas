@@ -1,0 +1,68 @@
+{
+    "createdDate": "2020-10-09 13:34:19.506495",
+    "fields": [
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "addressInfo.city",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "addressInfo.country",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "addressInfo.state",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "addressInfo.street",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "addressInfo.zip",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "email",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "firstName",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "id",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "lastName",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "phone",
+            "type": "string"
+        }
+    ],
+    "objectName": "MyContact",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "id": 40944,
+    "name": "BulkStep2DocsHub",
+    "debugLoggingExpires": "2020-10-09T00:15:54Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-08T16:15:54Z",
+    "steps": [
+      {
+        "id": 434590,
+        "onSuccess": [
+          "streamBulkResults"
+        ],
+        "onFailure": [],
+        "name": "generateMetadata",
+        "type": "script",
+        "properties": {
+          "body": "const downloadHeaders = {\n  'Accept':'application/json'\n};\n\nconst uploadHeaders = {\n  'Content-Type': 'multipart/form-data'\n};\n\nconst path = {\n  path: `/Test/${trigger.args.id}.${trigger.args.fileFormat}`\n};\n\ndone({ downloadHeaders, uploadHeaders, path });"
+        }
+      },
+      {
+        "id": 434591,
+        "onSuccess": [
+          "generateMetadata"
+        ],
+        "onFailure": [],
+        "name": "isSuccess",
+        "type": "filter",
+        "properties": {
+          "body": "const status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 434592,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "streamBulkResults",
+        "type": "elementRequestStream",
+        "properties": {
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "uploadFormDataName": "",
+          "uploadQuery": "${steps.generateMetadata.path}",
+          "downloadMethod": "GET",
+          "uploadApi": "/files",
+          "uploadMethod": "POST",
+          "uploadElementInstanceId": "${config.target}",
+          "downloadElementInstanceId": "${config.crmSource}",
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37032,
+        "onSuccess": [
+          "isSuccess"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 80865,
+        "key": "crmSource",
+        "name": "crmSource",
+        "type": "elementInstance",
+        "required": true
+      },
+      {
+        "id": 80866,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "required": true
+      },
+      {
+        "id": 80867,
+        "key": "target",
+        "name": "target",
+        "type": "elementInstance",
+        "required": true
+      }
+    ]
+  }
+]

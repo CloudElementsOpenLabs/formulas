@@ -1,0 +1,98 @@
+[
+  {
+    "id": 40943,
+    "name": "BulkStep2",
+    "description": "Receives the data stream from Step 1 and sends to Act-On",
+    "debugLoggingExpires": "2020-10-09T00:15:33Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-08T16:15:33Z",
+    "steps": [
+      {
+        "id": 434587,
+        "onSuccess": [
+          "streamBulkResults"
+        ],
+        "onFailure": [],
+        "name": "generateMetadata",
+        "type": "script",
+        "properties": {
+          "body": "\nlet downloadHeaders = {\n  \"Accept\":\"application/json\"\n};\n\ndone({\n  \"downloadHeaders\": downloadHeaders\n});\n "
+        }
+      },
+      {
+        "id": 434588,
+        "onSuccess": [
+          "generateMetadata"
+        ],
+        "onFailure": [],
+        "name": "isSuccess",
+        "type": "filter",
+        "properties": {
+          "body": "let status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 434589,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "streamBulkResults",
+        "type": "elementRequestStream",
+        "properties": {
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+          "uploadElementInstanceId": "${config.target}",
+          "uploadFormDataName": "",
+          "downloadElementInstanceId": "${config.crm.source}",
+          "downloadMethod": "GET",
+          "uploadApi": "/bulk/${config.object}",
+          "uploadFormData": "",
+          "uploadMethod": "POST",
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37031,
+        "onSuccess": [
+          "isSuccess"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 80862,
+        "key": "crm.source",
+        "name": "CRM Source",
+        "type": "elementInstance",
+        "description": "The CRM source instance",
+        "required": true
+      },
+      {
+        "id": 80863,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "description": "Object to transfer (contacts, accounts, CustomContact, etc.)",
+        "required": true
+      },
+      {
+        "id": 80864,
+        "key": "target",
+        "name": "target",
+        "type": "elementInstance",
+        "description": "Act-On Target Instance",
+        "required": true
+      }
+    ]
+  }
+]

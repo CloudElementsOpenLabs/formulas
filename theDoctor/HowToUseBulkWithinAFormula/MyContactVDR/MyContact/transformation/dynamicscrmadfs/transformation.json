@@ -1,0 +1,105 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "dynamicscrmadfs",
+    "fields": [
+        {
+            "level": "organization",
+            "path": "firstName",
+            "type": "string",
+            "vendorPath": "attributes.firstname",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.state",
+            "type": "string",
+            "vendorPath": "attributes.address1_stateorprovince",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.street",
+            "type": "string",
+            "vendorPath": "attributes.address1_line1",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.zip",
+            "type": "string",
+            "vendorPath": "attributes.address1_postalcode",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.city",
+            "type": "string",
+            "vendorPath": "attributes.address1_city",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "lastName",
+            "type": "string",
+            "vendorPath": "attributes.lastname",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "email",
+            "type": "string",
+            "vendorPath": "attributes.emailaddress1",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "phone",
+            "type": "string",
+            "vendorPath": "attributes.mobilephone",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.country",
+            "type": "string",
+            "vendorPath": "attributes.address1_country",
+            "vendorType": "string"
+        },
+        {
+            "configuration": [
+                {
+                    "properties": {
+                        "fromVendor": true,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "level": "organization",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "attributes.contactid",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "MyContact",
+    "vendorName": "contact"
+}

@@ -1,0 +1,86 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sfdc",
+    "fields": [
+        {
+            "level": "organization",
+            "path": "phone",
+            "type": "string",
+            "vendorPath": "MobilePhone"
+        },
+        {
+            "level": "organization",
+            "path": "firstName",
+            "type": "string",
+            "vendorPath": "FirstName"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.city",
+            "type": "string",
+            "vendorPath": "MailingCity"
+        },
+        {
+            "level": "organization",
+            "path": "lastName",
+            "type": "string",
+            "vendorPath": "LastName"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.state",
+            "type": "string",
+            "vendorPath": "MailingState"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.country",
+            "type": "string",
+            "vendorPath": "MailingCountry"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.street",
+            "type": "string",
+            "vendorPath": "MailingStreet"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.zip",
+            "type": "string",
+            "vendorPath": "MailingPostalCode"
+        },
+        {
+            "level": "organization",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "Id"
+        },
+        {
+            "level": "organization",
+            "path": "email",
+            "type": "string",
+            "vendorPath": "Email"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "MyContact",
+    "vendorName": "Contact"
+}
