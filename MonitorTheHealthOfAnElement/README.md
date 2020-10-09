@@ -15,9 +15,9 @@ You have two options when choosing how to import this formula. You can use the F
 2. Using the doctor:
   * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
   * In the terminal, from the MonitorTheHealthOfAnElement/TheDoctor directory, run the command:
-  ```
-  doctor upload formulas <accountNickName> -f ElementHealthFormula.json
-  ```
+    ```
+    doctor upload formulas <accountNickName> -f ElementHealthFormula.json
+    ```
 ### Use your formula:
 1. Create an instance of the formula and a source element instance (you can choose any element you'd like)!
 2. You need to enter an email. Then, if a call is made during one of the 15 minute polls that fails, you will be sent an email.

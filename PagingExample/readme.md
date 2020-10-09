@@ -15,21 +15,21 @@ You have two options when choosing how to import this formula. You can use the F
 2. Using the doctor:
   * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
   * In the terminal, from the PagingExample/TheDoctor directory, run the command:
-  ```
-  doctor upload formulas <accountNickName> -f PagingExample.json
-  ```
+    ```
+    doctor upload formulas <accountNickName> -f PagingExample.json
+    ```
  
 ### Use your formula:
 1. Create an instance of the formula and a source element instance (the template was built using Quickbooks Online)
 2. Trigger the formula
   * In the Cloud Elements UI, toggle the formula to debugging mode, select your formula instance, add your trigger payload (example below), and click 'run'.
   * For ease of testing, the formula was configured with a manual trigger that expects a payload for querying:
-  ```
-  {
-    "endDate": "2019-08-13",
-    "startDate": "2015-07-30"
-  }
-  ```
+    ```
+    {
+      "endDate": "2019-08-13",
+      "startDate": "2015-07-30"
+    }
+    ```
 
 ### How does the formula page?
 The `buildQuery` step checks if the `getInvoices` step has been executed before, if it has, it includes the nextPage token in the query, which is used in `getInvoices`.  The filter step `isLastPage` checks if the response body from the latest call to `getInvoices` is empty--if true the formula completes successfully, if false the formula goes back to `buildQuery` to start the process of fetching the next step.

@@ -28,24 +28,24 @@ You have two options for importing your resources. You can either import using t
 
 ### Import Using the doctor:
 1. Insure you have the correct version of the doctor installed locally. Run the command:
-```
-npm i -g ce-util
-```
-This will install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
+    ```
+    npm i -g ce-util
+    ```
+    This will install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
 2. Import both formulas:
     * In the terminal, from the TheDoctor/Formulas directory, run the command:
-    ```
-    doctor upload formulas <accountNickName> -f BulkStep1.json
-    ```
+        ```
+        doctor upload formulas <accountNickName> -f BulkStep1.json
+        ```
     Repeat for the BulkStep2 (or BulkStep2DocsHub, depending on your use-case) formula:
-    ```
-    doctor upload formulas <accountNickName> -f BulkStep2.json
-    ```
+        ```
+        doctor upload formulas <accountNickName> -f BulkStep2.json
+        ```
 3. Import the VDR and example transformations:
     * In the terminal, from the TheDoctor/MyContactVDR directory, run the command
-    ```
-    doctor upload vdrs <accountNickName> -d . -n MyContact
-    ```
+        ```
+        doctor upload vdrs <accountNickName> -d . -n MyContact
+        ```
     This will import the VDR as well as the transformations into your account.
 4. Follow the steps below under [Configure Your Bulk Formula](#configure-your-bulk-formula).
 
