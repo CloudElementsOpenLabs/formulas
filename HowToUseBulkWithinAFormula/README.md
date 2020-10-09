@@ -37,7 +37,7 @@ You have two options for importing your resources. You can either import using t
         ```
         doctor upload formulas <accountNickName> -f BulkStep1.json
         ```
-    Repeat for the BulkStep2 (or BulkStep2DocsHub, depending on your use-case) formula:
+    * Repeat for the BulkStep2 (or BulkStep2DocsHub, depending on your use-case) formula:
         ```
         doctor upload formulas <accountNickName> -f BulkStep2.json
         ```
