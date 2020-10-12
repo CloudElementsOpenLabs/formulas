@@ -29,14 +29,14 @@ Included in this folder is [Loop_Step_Aggregation.json](Loop_Step_Aggregation.js
 ## Import Using the UI:
 1. Go to the Formulas UI and click the `BUILD NEW FORMULA` button, then select `Import` from the dropdown.
 2. Find the json file `Loop_Step_Aggregation.json` in the GettingAllResultsFromLoop directory and use it to import the formula.
-3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed now. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
+3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
 
 ## Import Using the doctor:
-1. Insure you have the latest non-beta version of the doctor installed via npm. You can follow the directions found here (https://www.npmjs.com/package/ce-util/v/2.2.5) or run the command `npm install -g ce-util`. You'll need a version of node that is >= v6.3.0
+1. Insure you have the latest non-beta version of the doctor installed via npm. You can follow the directions found here (https://www.npmjs.com/package/ce-util/v/2.2.5) or run the command `npm install -g ce-util`. You'll need a version of node that is >= v6.3.0. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
 2. From the TheDoctor directory, run the command:
   ```
-  doctor upload formulas <acctNickName> -f loopStepAggregation.json
+  doctor upload formulas <acctNickName> -f Loop_Step_Aggregation.json
   ```
   This will upload the Loop Step Aggregation Formula into the specified account.
 
-3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed now. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
+3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.

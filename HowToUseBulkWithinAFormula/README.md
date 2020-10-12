@@ -64,7 +64,7 @@ Follow the steps below to finish configuring your bulk formulas.
     * Enter the Formula Instnace Id you captured from BulkStep2.
 4. Go to your BulkStep1 Formula and open it, then select the `TRY IT OUT` button. Choose the instance you created before and click `RUN`.
 5. Go back to the main Formulas UI and find your BulkStep2 formula. Click `EXECUTIONS` (appears on hover).
-6. See that the Exeution was successful!
+6. You might have to click the refresh icon next to `Formula Executions`, as it takes some time for the formulas to communicate. 
 
 ### Additional Information
 Flowcharts describing the formulas are linked below:

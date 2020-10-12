@@ -13,12 +13,13 @@ You have two options when choosing how to import this formula. You can use the F
   * Click the `BUILD NEW FORMULA` button [found on this page](https://my-staging.cloudelements.io/formulas) and select `Import` from the dropdown.
   * Find the file `ElementHealthFormula.json` in the MonitorTheHealthOfAnElement directory and import it.
 2. Using the doctor:
-  * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
+  * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
   * In the terminal, from the MonitorTheHealthOfAnElement/TheDoctor directory, run the command:
     ```
     doctor upload formulas <accountNickName> -f ElementHealthFormula.json
     ```
 ### Use your formula:
-1. Create an instance of the formula and a source element instance (you can choose any element you'd like)!
-2. You need to enter an email. Then, if a call is made during one of the 15 minute polls that fails, you will be sent an email.
+1. Create an instance of the formula and a source element instance (you can choose any element you'd like)! You will enter the email you'd like to be notified at here.
+2. In the `test` step, notice that the `API` field has `/accounts`. If the element you chose does not have an `/accounts` endpoint, you will need to update this field first.
+3. Now, if a failed call is made during one of the 15 minute polls, you will be sent an email.
 3. Feel free to play around with the formula until it suits your specific needs.
