@@ -23,7 +23,7 @@ You have two options for importing your resources. You can either import using t
 3. Create the VDR and transformations for Salesforce and Microsoft Dynamics CRM:
     * Create the VDR by calling POST `/organizations/objects/MyContact/definitions` with this payload: [ObjectDefinition.json](ObjectDefinition.json). You can find this API [here](https://my-staging.cloudelements.io/api-docs/platform/organizations).
     * Create the transformation for Salesforce by calling POST `/organizations/elements/sfdc/transformations/MyContact` with this payload: [MyContactSFDC.json](MyContactSFDC.json) (same page as above), where the keyOrId is `sfdc` and the objectName is `MyContact`.
-    * Create the transformation for Microsoft Dynamics CRM by calling POST `/organizations/elements/dynamicscrm/transformations/MyContact` with the payload: [dynamicscrmMyContact.json](dynamicscrmMyContact.json) (same page and endpoint as the above), where the keyOrId is `dynamicscrm` and the objectName is `MyContact`.
+    * Create the transformation for Microsoft Dynamics CRM by calling POST `/organizations/elements/dynamicscrmadfs/transformations/MyContact` with the payload: [dynamicscrmadfsMyContact.json](dynamicscrmadfsMyContact.json) (same page and endpoint as the above), where the keyOrId is `dynamicscrmadfs` and the objectName is `MyContact`.
 4. Follow the steps below under [Configure Your Bulk Formula](#configure-your-bulk-formula).
 
 ### Import Using the doctor:
