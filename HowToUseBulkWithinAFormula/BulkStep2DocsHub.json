@@ -1,5 +1,5 @@
 {
-  "name": "bulk step 2 - docs hub",
+  "name": "Bulk Step 2-DocsHub",
   "steps": [{
     "id": 241212,
     "onSuccess": ["streamBulkResults"],

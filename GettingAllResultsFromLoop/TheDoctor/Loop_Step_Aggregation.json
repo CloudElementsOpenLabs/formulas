@@ -1,0 +1,100 @@
+[
+  {
+    "id": 40938,
+    "name": "Loop_Step_Aggregation",
+    "debugLoggingExpires": "2020-10-08T23:57:49Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-08T14:54:48Z",
+    "steps": [
+      {
+        "id": 434567,
+        "onSuccess": [
+          "contactsLoop"
+        ],
+        "onFailure": [],
+        "name": "aggregator",
+        "type": "script",
+        "properties": {
+          "body": "let arr = steps.aggregator ? steps.aggregator.arr : [];\narr.push(steps.contactsLoop.entry.Full_Name);\n\ndone({arr:arr});"
+        }
+      },
+      {
+        "id": 434568,
+        "onSuccess": [
+          "aggregator"
+        ],
+        "onFailure": [
+          "final"
+        ],
+        "name": "contactsLoop",
+        "type": "loop",
+        "properties": {
+          "list": "${steps.getContacts.response.body}"
+        }
+      },
+      {
+        "id": 434569,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "final",
+        "type": "script",
+        "properties": {
+          "body": "const arr= steps.aggregator.arr;\ndone({arr:arr});"
+        }
+      },
+      {
+        "id": 434570,
+        "onSuccess": [
+          "contactsLoop"
+        ],
+        "onFailure": [],
+        "name": "getContacts",
+        "type": "elementRequest",
+        "properties": {
+          "elementInstanceId": "${config.Instance}",
+          "method": "GET",
+          "api": "/contacts"
+        }
+      },
+      {
+        "id": 434571,
+        "onSuccess": [
+          "aggregator"
+        ],
+        "onFailure": [],
+        "name": "test",
+        "type": "script",
+        "properties": {
+          "body": "let test = steps.test ? steps.test.arr1 : [];\nlet count=steps.test.length;\nstep.test.length.push(count);\nif(step.test.length>=10){\n  break;\n}\n\ndone({arr1:arr1}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37026,
+        "onSuccess": [
+          "getContacts"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 80855,
+        "key": "Instance",
+        "name": "Instance",
+        "type": "elementInstance",
+        "required": true
+      }
+    ]
+  }
+]

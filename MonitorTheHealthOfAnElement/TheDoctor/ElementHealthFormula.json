@@ -1,0 +1,71 @@
+[
+  {
+    "id": 40971,
+    "name": "HealthCheck",
+    "debugLoggingExpires": "2020-10-10T04:41:16Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-09T20:41:16Z",
+    "steps": [
+      {
+        "id": 434824,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "sendEmail",
+        "type": "script",
+        "properties": {
+          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to ElementNameHere has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);\n\ndone();"
+        }
+      },
+      {
+        "id": 434825,
+        "onSuccess": [],
+        "onFailure": [
+          "sendEmail"
+        ],
+        "name": "test",
+        "type": "elementRequest",
+        "properties": {
+          "api": "/ping",
+          "elementInstanceId": "${config.instance}",
+          "method": "GET"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37059,
+        "onSuccess": [
+          "test"
+        ],
+        "onFailure": [],
+        "type": "scheduled",
+        "async": true,
+        "name": "trigger",
+        "properties": {
+          "cron": "0 0/15 * 1/1 * ? *"
+        }
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 80909,
+        "key": "email",
+        "name": "email",
+        "type": "value",
+        "required": true
+      },
+      {
+        "id": 80910,
+        "key": "instance",
+        "name": "instance",
+        "type": "elementInstance",
+        "required": true
+      }
+    ]
+  }
+]
