@@ -14,7 +14,7 @@
         "name": "sendEmail",
         "type": "script",
         "properties": {
-          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to SAP B1 has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);\n\ndone();"
+          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to ElementNameHere has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);\n\ndone();"
         }
       },
       {
@@ -26,7 +26,7 @@
         "name": "test",
         "type": "elementRequest",
         "properties": {
-          "api": "/accounts",
+          "api": "/ping",
           "elementInstanceId": "${config.instance}",
           "method": "GET"
         }
