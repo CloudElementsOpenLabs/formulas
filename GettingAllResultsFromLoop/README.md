@@ -24,7 +24,7 @@ Included in this folder is [Loop_Step_Aggregation.json](Loop_Step_Aggregation.js
 * You will need an authenticated Element instance with a GET /contacts API (endpoint). You can authenticate one in the UI.
 * Your Element needs to return a field called **Name**. Alternatively, you can update the javascript step called `aggregator` to refer to a field that exists on the API you choose (i.e. for Zoho CRM v2, the field **Full_Name** could be used instead). You can update this step easily in the Formula UI.
 * There is no paging in this formula. If you have over 200 contacts your final array will be an array of 200 names since the page size defaults to 200.
-* The formula will be slow if you have a lot of contacts, and you might need to click the `CONTINUE POLLING` button in the steps pane after receiving a yellow warning message that the formula has stopped polling for results. This is expected as it is just a simple formula that you would need to edit and add your own logic to.
+* The formula may take a few minutes to run, depending on the number of contacts, and you might need to click the `CONTINUE POLLING` button in the steps pane after receiving a yellow warning message that the formula has stopped polling for results. This is expected as it is just a simple formula that you would need to edit and add your own logic to.
 
 ## Import Using the UI:
 1. Go to the Formulas UI and click the `BUILD NEW FORMULA` button, then select `Import` from the dropdown.
@@ -32,7 +32,7 @@ Included in this folder is [Loop_Step_Aggregation.json](Loop_Step_Aggregation.js
 3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
 
 ## Import Using the doctor:
-1. Insure you have the latest non-beta version of the doctor installed via npm. You can follow the directions found here (https://www.npmjs.com/package/ce-util/v/2.2.5) or run the command `npm install -g ce-util`. You'll need a version of node that is >= v6.3.0. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
+1. Insure you have the latest non-beta version of the doctor installed via npm. You can follow the directions found [here](https://www.npmjs.com/package/ce-util) or run the command `npm install -g ce-util`. You'll need a version of node that is >= v6.3.0. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
 2. From the TheDoctor directory, run the command:
   ```
   doctor upload formulas <acctNickName> -f Loop_Step_Aggregation.json

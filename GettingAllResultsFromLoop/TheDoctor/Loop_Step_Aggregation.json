@@ -16,7 +16,7 @@
         "name": "aggregator",
         "type": "script",
         "properties": {
-          "body": "let arr = steps.aggregator ? steps.aggregator.arr : [];\narr.push(steps.contactsLoop.entry.Full_Name);\n\ndone({arr:arr});"
+          "body": "let arr = steps.aggregator ? steps.aggregator.arr : [];\narr.push(steps.contactsLoop.entry.Full_Name);\n\ndone({ arr });"
         }
       },
       {
@@ -40,7 +40,7 @@
         "name": "final",
         "type": "script",
         "properties": {
-          "body": "const arr= steps.aggregator.arr;\ndone({arr:arr});"
+          "body": "console.log(steps.aggregator.arr;"
         }
       },
       {
@@ -55,18 +55,6 @@
           "elementInstanceId": "${config.Instance}",
           "method": "GET",
           "api": "/contacts"
-        }
-      },
-      {
-        "id": 434571,
-        "onSuccess": [
-          "aggregator"
-        ],
-        "onFailure": [],
-        "name": "test",
-        "type": "script",
-        "properties": {
-          "body": "let test = steps.test ? steps.test.arr1 : [];\nlet count=steps.test.length;\nstep.test.length.push(count);\nif(step.test.length>=10){\n  break;\n}\n\ndone({arr1:arr1}"
         }
       }
     ],
