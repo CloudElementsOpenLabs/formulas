@@ -1,0 +1,92 @@
+[
+  {
+    "id": 40942,
+    "name": "BulkStep1",
+    "description": "Start a bulk download from an element",
+    "debugLoggingExpires": "2020-10-09T00:15:11Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-08T16:15:11Z",
+    "steps": [
+      {
+        "id": 434585,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "createBulkJob",
+        "type": "elementRequest",
+        "properties": {
+          "method": "POST",
+          "body": "${steps.createQuery.body}",
+          "elementInstanceId": "${config.crm.source}",
+          "headers": "${steps.createQuery.headers}",
+          "query": "",
+          "api": "/bulk/query"
+        }
+      },
+      {
+        "id": 434586,
+        "onSuccess": [
+          "createBulkJob"
+        ],
+        "onFailure": [],
+        "name": "createQuery",
+        "type": "script",
+        "properties": {
+          "body": "done({\n  \"body\":{\n    \"query\": `select * from ${config.object} limit 100`,\n    \"headerData\": {\n      \"order\": \"asc\"\n    }\n  },\n  \"headers\":{\n    \"Elements-Async-Callback-Url\": `/formulas/instances/${config.secondformulainstanceid}/executions`,\n  },\n});"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37030,
+        "onSuccess": [
+          "createQuery"
+        ],
+        "onFailure": [],
+        "type": "scheduled",
+        "async": true,
+        "name": "trigger",
+        "properties": {
+          "cron": "${config.cron}"
+        }
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 80858,
+        "key": "crm.source",
+        "name": "CRM Source",
+        "type": "elementInstance",
+        "description": "Source CRM instance to take updates from and push into Act-On",
+        "required": true
+      },
+      {
+        "id": 80859,
+        "key": "cron",
+        "name": "cron",
+        "type": "value",
+        "required": true
+      },
+      {
+        "id": 80860,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "description": "Which object to pull from the CRM (contacts, accounts, CustomContact, etc.)",
+        "required": true
+      },
+      {
+        "id": 80861,
+        "key": "secondformulainstanceid",
+        "name": "SecondFormulaInstanceId",
+        "type": "value",
+        "description": "The ID of the second formula instance",
+        "required": true
+      }
+    ]
+  }
+]
