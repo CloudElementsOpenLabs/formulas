@@ -13,7 +13,7 @@ You have two options when choosing how to import this formula. You can use the F
   * Click the `BUILD NEW FORMULA` button [found on this page](https://my-staging.cloudelements.io/formulas) and select `Import` from the dropdown.
   * Find the file `PagingExample.json` in the PagingExample directory and import it.
 2. Using the doctor:
-  * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
+  * Insure you have the correct version of the doctor installed locally. Run the command `npm i -g ce-util` to install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util) as well. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
   * In the terminal, from the PagingExample/TheDoctor directory, run the command:
     ```
     doctor upload formulas <accountNickName> -f PagingExample.json

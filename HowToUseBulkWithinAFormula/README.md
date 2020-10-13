@@ -11,6 +11,7 @@ In this example, we will use two formulas--one creates the bulk job, specifying 
 
     If you are interested in Example 2, please replace `BulkStep2.json` referenced below with [BulkStep2DocsHub.json](BulkStep2DocsHub.json).  This formula template is setup to work with Google Drive. If you are working with a different docs hub element, you will need to make adjustments based on the provider's requirements (e.g. path, file name, etc).  Please note that the folder and filename are both configured in the step `generateMetadata`--adjust as needed for your use case.
 2. For these formulas to work, you must use a VDR! You must be able to call GET `/NameOfVDR`, copy a payload that gets returned, and then call POST `/NameOfVDR` to the other endpoint. Included are some example transformations as well as instructions for how to use them.
+3. The sample VDR in this repo was built using the VDR Engine V2. However, it **is** backwards compatible with the VDR Engine V1, so it does not matter which version you are running in your organization. If you'd like to check, you can follow the instructions [here](https://docs.cloud-elements.com/home/introducing-v2-engine-feff13e-introducing-v2-engine) underneath `Determining your Current Engine`.
 
 ## Options for Importing Resources:
 You have two options for importing your resources. You can either import using the UI or the doctor (Cloud Element's cli tool). Follow the instructions below for the method you prefer, then move on to [Configure Your Bulk Formula](#configure-your-bulk-formula).
@@ -31,7 +32,7 @@ You have two options for importing your resources. You can either import using t
     ```
     npm i -g ce-util
     ```
-    This will install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util/v/2.2.5) as well.
+    This will install the latest, non-beta version of the doctor. You can find full instructions [here](https://www.npmjs.com/package/ce-util) as well.
 2. Import both formulas:
     * In the terminal, from the TheDoctor/Formulas directory, run the command:
         ```
@@ -53,7 +54,7 @@ You have two options for importing your resources. You can either import using t
 Follow the steps below to finish configuring your bulk formulas.
 1. Authenticate Element Instances:
     * If using the example VDR for **Example 1**, you will need to authenticate an element instance of both `Salesforce` and `Microsoft Dynamics CRM`. You will not see any transformations loaded from your VDR until you have authenticated instances. You will use one instance as a source element and one as a destination (target) element when creating your formula instance below.
-    * If using the example VDR for **Example 2**, you will need to authenticate an element instance of one of the above (`Salesforce` or `Microsoft Dynamics CRM`) as well as an instance of `Google Drive`. You will use one of either `Salesforce` or `Microsofrt Dynamics CRM` as a source element, and a Docs Hub element (Google Drive) as the destination (target) when creating your Formula instance below.
+    * If using the example VDR for **Example 2**, you will need to authenticate an element instance of one of the above (`Salesforce` or `Microsoft Dynamics CRM`) as well as an instance of `Google Drive`. You will use one of either `Salesforce` or `Microsoft Dynamics CRM` as a source element, and a Docs Hub element (Google Drive) as the destination (target) when creating your Formula instance below.
 2. Create a formula instance for Bulk Step 2.
     * Make sure you remember which element you chose for CRM source. You will need to choose the same one in the next formula instance you create for Bulk Step 1.
     * For `object` under `Values`, enter: `MyContact` (or the name of your VDR).
