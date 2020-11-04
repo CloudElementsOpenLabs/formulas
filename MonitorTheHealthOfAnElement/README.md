@@ -3,6 +3,8 @@ The recommended way to monitor the health of an element is to create a formula. 
 
 You can alternatively add these steps into a current Formula so that when an Element request step occurs, if an Element instance is not working it will automatically disable the Element instance and send an email notification to the email specified when setting up the instance.
 
+A flowchart describing the formula can be found [here](Flowchart-HealthCheck.html).
+
 **Note:** If you use the steps in this Formula to disable an Element instance, please be aware that:
 1. If the request fails for any reason (ie the endpoint entered was incorrect, or the body was unable to be posted, or the vendor had an error, etc) the Element instance will be disabled and an email will be sent.
 2. To re-enable the Element instance, you can make a `PUT` request to `/instances/enabled`.
