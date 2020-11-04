@@ -1,42 +1,81 @@
 [
   {
-    "id": 40971,
+    "id": 41028,
     "name": "HealthCheck",
-    "debugLoggingExpires": "2020-10-10T04:41:16Z",
+    "debugLoggingExpires": "2020-11-04T05:53:40Z",
     "userId": 62973,
     "accountId": 48093,
-    "createdDate": "2020-10-09T20:41:16Z",
+    "createdDate": "2020-10-12T16:02:59Z",
     "steps": [
       {
-        "id": 434824,
-        "onSuccess": [],
-        "onFailure": [],
-        "name": "sendEmail",
-        "type": "script",
-        "properties": {
-          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to ElementNameHere has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);\n\ndone();"
-        }
-      },
-      {
-        "id": 434825,
-        "onSuccess": [],
+        "id": 435708,
+        "onSuccess": [
+          "logSucess"
+        ],
         "onFailure": [
           "sendEmail"
         ],
-        "name": "test",
+        "name": "checkHealth",
         "type": "elementRequest",
         "properties": {
-          "api": "/ping",
-          "elementInstanceId": "${config.instance}",
-          "method": "GET"
+          "api": "/${steps.getEndpoint}",
+          "method": "GET",
+          "elementInstanceId": "${config.instance}"
+        }
+      },
+      {
+        "id": 442680,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "disableInstance",
+        "type": "request",
+        "properties": {
+          "api": "/instances/${config.instance}/enabled",
+          "method": "DELETE"
+        }
+      },
+      {
+        "id": 442683,
+        "onSuccess": [
+          "checkHealth"
+        ],
+        "onFailure": [],
+        "name": "getEndpoint",
+        "type": "script",
+        "properties": {
+          "body": "done(config.object || ping);"
+        }
+      },
+      {
+        "id": 442681,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "logSucess",
+        "type": "script",
+        "properties": {
+          "body": "// This would be what happens when a successful call is made.\ndone(console.log('Success! Your Element has a heartbeat!'));"
+        }
+      },
+      {
+        "id": 435707,
+        "onSuccess": [
+          "disableInstance"
+        ],
+        "onFailure": [
+          "disableInstance"
+        ],
+        "name": "sendEmail",
+        "type": "script",
+        "properties": {
+          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to an Element with Element Instance Id ${config.instance} has failed with error: ${JSON.stringify(steps.checkHealth.response.body)}. On instance ID: ${config.instance}. This instance has been disabled. You can re-enable this instance via the /instances/enabled API.`);\n\ndone(console.log(config));"
         }
       }
     ],
     "triggers": [
       {
-        "id": 37059,
+        "id": 37116,
         "onSuccess": [
-          "test"
+          "getEndpoint"
         ],
         "onFailure": [],
         "type": "scheduled",
@@ -53,18 +92,26 @@
     "singleThreaded": false,
     "configuration": [
       {
-        "id": 80909,
+        "id": 81035,
         "key": "email",
         "name": "email",
         "type": "value",
         "required": true
       },
       {
-        "id": 80910,
+        "id": 81036,
         "key": "instance",
         "name": "instance",
         "type": "elementInstance",
         "required": true
+      },
+      {
+        "id": 82083,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "description": "Enter the object you want your HealthCheck to send a request to. Default is the `ping` endpoint.",
+        "required": false
       }
     ]
   }

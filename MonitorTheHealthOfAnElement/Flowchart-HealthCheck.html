@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Health Check</title>
+    <title>HealthCheck</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -18,8 +18,8 @@
         .node circle,
         .node ellipse,
         .node polygon {
-                    fill: #cde498;
-                    stroke: #333;
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
                     stroke-width: 2px;
                 }
         .mermaid .label {
@@ -44,38 +44,64 @@
         td {
                     width: 180px;
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
                 }
         h2 {
                     text-align: center;
-                    color: red;
                     border: 1px solid black;
                     border-radius: 5px;
                     padding: 1em;
                 }
         .container {
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
                 }
     </style>
 </head>
 <body>
     <h2>
-        Health Check
+        HealthCheck
     </h2>
     <div class="container">
         <div class="mermaid">
             graph TD
-            step-000((Trigger))
-            step-001>test]
-            step-002(sendEmail)
-            step-003((END))
-            step-000== continue ==>step-001
-            step-001-- failure -->step-002
-            step-002-. done .->step-003
-            style step-001 fill:#0f6ab4;
-            style step-003 stroke-width:3px,stroke-dasharray: 5, 5;
-            click step-000 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT5UcmlnZ2VyIEVsZW1lbnQ6PGJyPjxicj48cHJlPiAgYXN5bmMgOiBUcnVlPGJyPiAgIGNyb24gOiAwIDAvMTUgKiAxLzEgKiA/ICo8YnI+ICAgdHlwZSA6IHNjaGVkdWxlZDwvcHJlPjxicj5SQVcgSlNPTjo8YnI+PGJyPjxwcmU+ezxicj4gICduYW1lJzogJ3RyaWdnZXInLCA8YnI+ICAnb25GYWlsdXJlJzogW10sIDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAndGVzdCc8YnI+ICBdLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdjcm9uJzogJzAgMC8xNSAqIDEvMSAqID8gKic8YnI+ICB9LCA8YnI+ICAnYXN5bmMnOiB0cnVlLCA8YnI+ICAndHlwZSc6ICdzY2hlZHVsZWQnLCA8YnI+ICAnaWQnOiAxNzczNDxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4=" "Trigger Element:<br><pre>  async : True<br>   cron : 0 0/15 * 1/1 * ? *<br>   type : scheduled</pre>"
-            click step-001 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnRlc3Q8L3RpdGxlPjwvaGVhZD48Ym9keT5SZXF1ZXN0Ojxicj48YnI+PHByZT4gICAgICAgICAgICAgICAgYXBpIDogL2FjY291bnRzPGJyPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5pbnN0YW5jZX08YnI+ICAgICAgICAgICAgIG1ldGhvZCA6IEdFVDwvcHJlPjxicj5SQVcgSlNPTjo8YnI+PGJyPjxwcmU+ezxicj4gICduYW1lJzogJ3Rlc3QnLCA8YnI+ICAnb25GYWlsdXJlJzogWzxicj4gICAgJ3NlbmRFbWFpbCc8YnI+ICBdLCA8YnI+ICAnb25TdWNjZXNzJzogW10sIDxicj4gICdpZCc6IDEwMzI4OSwgPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5pbnN0YW5jZX0nLCA8YnI+ICAgICdhcGknOiAnL2FjY291bnRzJywgPGJyPiAgICAnbWV0aG9kJzogJ0dFVCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg==" "Request:<br><pre>                api : /accounts<br>  elementInstanceId : ${config.instance}<br>             method : GET</pre>"
-            click step-002 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnNlbmRFbWFpbDwvdGl0bGU+PC9oZWFkPjxib2R5PkphdmFTY3JpcHQ6PGJyPjxicj48cHJlPm5vdGlmeS5lbWFpbChgJHtjb25maWcuZW1haWx9YCxgaW5zdGFuY2UgZmFpbHVyZWAsIGBBbiBBUEkgY2FsbCB0byBTQVAgQjEgaGFzIGZhaWxlZCB3aXRoIGVycm9yOiAke0pTT04uc3RyaW5naWZ5KHN0ZXBzLnRlc3QucmVzcG9uc2UuYm9keSl9LiBPbiBpbnN0YW5jZSBJRDogJHtjb25maWcuaW5zdGFuY2V9YCk7PGJyPjxicj5kb25lKCk7PC9wcmU+PGJyPlJBVyBKU09OOjxicj48YnI+PHByZT57PGJyPiAgJ25hbWUnOiAnc2VuZEVtYWlsJywgPGJyPiAgJ29uRmFpbHVyZSc6IFtdLCA8YnI+ICAnb25TdWNjZXNzJzogW10sIDxicj4gICdpZCc6IDEwMzI5OCwgPGJyPiAgJ3R5cGUnOiAnc2NyaXB0JywgPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdub3RpZnkuZW1haWwoYCR7Y29uZmlnLmVtYWlsfWAsYGluc3RhbmNlIGZhaWx1cmVgLCBgQW4gQVBJIGNhbGwgdG8gU0FQIEIxIGhhcyBmYWlsZWQgd2l0aCBlcnJvcjogJHtKU09OLnN0cmluZ2lmeShzdGVwcy50ZXN0LnJlc3BvbnNlLmJvZHkpfS4gT24gaW5zdGFuY2UgSUQ6ICR7Y29uZmlnLmluc3RhbmNlfWApO1xuXG5kb25lKCk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+" "JavaScript:<br><pre>notify.email(`${config.email}`,`instance failure`, `An API call to SAP B1 has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);<br><br>done();</pre>"
+
+                step-000((Trigger))
+            step-001(getEndpoint)
+            step-002>checkHealth]
+            step-003(logSucess)
+            step-007((END))
+            step-005(sendEmail)
+            step-006>disableInstance]
+            step-007((END))
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-002-- success -->step-003
+            step-002-- failure -->step-005
+            step-003-. done .->step-007
+            step-005== continue ==>step-006
+            step-006-. done .->step-007
+
+                style step-002 stroke:#0f6ab4;
+            style step-007 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-006 stroke:#a41e22;
+            style step-007 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gICBjcm9uIDogMCAwLzE1ICogMS8xICogPyAqPGJyPiAgIHR5cGUgOiBzY2hlZHVsZWQ8YnI+ICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogMzcxMTYsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZXRFbmRwb2ludCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAndHlwZSc6ICdzY2hlZHVsZWQnLDxicj4gICdhc3luYyc6IHRydWUsPGJyPiAgJ25hbWUnOiAndHJpZ2dlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnY3Jvbic6ICcwIDAvMTUgKiAxLzEgKiA/IConPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Trigger Element:<br><pre>   cron : 0 0/15 * 1/1 * ? *<br>   type : scheduled<br>  async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldEVuZHBvaW50PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoY29uZmlnLm9iamVjdCB8fCBwaW5nKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDQyNjgzLDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnY2hlY2tIZWFsdGgnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZ2V0RW5kcG9pbnQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGNvbmZpZy5vYmplY3QgfHwgcGluZyk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done(config.object || ping);</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrSGVhbHRoPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+UmVxdWVzdDo8L2I+PGJyPjxicj48cHJlPiAgICAgICAgICAgICAgICBhcGkgOiAvJHtzdGVwcy5nZXRFbmRwb2ludH08YnI+ICAgICAgICAgICAgIG1ldGhvZCA6IEdFVDxicj4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuaW5zdGFuY2V9PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDQzNTcwOCw8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2xvZ1N1Y2Vzcyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnc2VuZEVtYWlsJzxicj4gIF0sPGJyPiAgJ25hbWUnOiAnY2hlY2tIZWFsdGgnLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdhcGknOiAnLyR7c3RlcHMuZ2V0RW5kcG9pbnR9Jyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJyw8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5pbnN0YW5jZX0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>                api : /${steps.getEndpoint}<br>             method : GET<br>  elementInstanceId : ${config.instance}</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmxvZ1N1Y2VzczwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT4vLyBUaGlzIHdvdWxkIGJlIHdoYXQgaGFwcGVucyB3aGVuIGEgc3VjY2Vzc2Z1bCBjYWxsIGlzIG1hZGUuPGJyPmRvbmUoY29uc29sZS5sb2coJ1N1Y2Nlc3MhIFlvdXIgRWxlbWVudCBoYXMgYSBoZWFydGJlYXQhJykpOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0NDI2ODEsPGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdsb2dTdWNlc3MnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICcvLyBUaGlzIHdvdWxkIGJlIHdoYXQgaGFwcGVucyB3aGVuIGEgc3VjY2Vzc2Z1bCBjYWxsIGlzIG1hZGUuXG5kb25lKGNvbnNvbGUubG9nKCdTdWNjZXNzISBZb3VyIEVsZW1lbnQgaGFzIGEgaGVhcnRiZWF0IScpKTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>// This would be what happens when a successful call is made.<br>done(console.log('Success! Your Element has a heartbeat!'));</pre>"
+            click step-005 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnNlbmRFbWFpbDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5ub3RpZnkuZW1haWwoYCR7Y29uZmlnLmVtYWlsfWAsYGluc3RhbmNlIGZhaWx1cmVgLCBgQW4gQVBJIGNhbGwgdG8gYW4gRWxlbWVudCB3aXRoIEVsZW1lbnQgSW5zdGFuY2UgSWQgJHtjb25maWcuaW5zdGFuY2V9IGhhcyBmYWlsZWQgd2l0aCBlcnJvcjogJHtKU09OLnN0cmluZ2lmeShzdGVwcy5jaGVja0hlYWx0aC5yZXNwb25zZS5ib2R5KX0uIE9uIGluc3RhbmNlIElEOiAke2NvbmZpZy5pbnN0YW5jZX0uIFRoaXMgaW5zdGFuY2UgaGFzIGJlZW4gZGlzYWJsZWQuIFlvdSBjYW4gcmUtZW5hYmxlIHRoaXMgaW5zdGFuY2UgdmlhIHRoZSAvaW5zdGFuY2VzL2VuYWJsZWQgQVBJLmApOzxicj48YnI+ZG9uZShjb25zb2xlLmxvZyhjb25maWcpKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDM1NzA3LDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnZGlzYWJsZUluc3RhbmNlJzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFs8YnI+ICAgICdkaXNhYmxlSW5zdGFuY2UnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICdzZW5kRW1haWwnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdub3RpZnkuZW1haWwoYCR7Y29uZmlnLmVtYWlsfWAsYGluc3RhbmNlIGZhaWx1cmVgLCBgQW4gQVBJIGNhbGwgdG8gYW4gRWxlbWVudCB3aXRoIEVsZW1lbnQgSW5zdGFuY2UgSWQgJHtjb25maWcuaW5zdGFuY2V9IGhhcyBmYWlsZWQgd2l0aCBlcnJvcjogJHtKU09OLnN0cmluZ2lmeShzdGVwcy5jaGVja0hlYWx0aC5yZXNwb25zZS5ib2R5KX0uIE9uIGluc3RhbmNlIElEOiAke2NvbmZpZy5pbnN0YW5jZX0uIFRoaXMgaW5zdGFuY2UgaGFzIGJlZW4gZGlzYWJsZWQuIFlvdSBjYW4gcmUtZW5hYmxlIHRoaXMgaW5zdGFuY2UgdmlhIHRoZSAvaW5zdGFuY2VzL2VuYWJsZWQgQVBJLmApO1xuXG5kb25lKGNvbnNvbGUubG9nKGNvbmZpZykpOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>notify.email(`${config.email}`,`instance failure`, `An API call to an Element with Element Instance Id ${config.instance} has failed with error: ${JSON.stringify(steps.checkHealth.response.body)}. On instance ID: ${config.instance}. This instance has been disabled. You can re-enable this instance via the /instances/enabled API.`);<br><br>done(console.log(config));</pre>"
+            click step-006 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmRpc2FibGVJbnN0YW5jZTwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPk90aGVyIChyZXF1ZXN0KTo8L2I+PGJyPjxicj48cHJlPiAgICAgYXBpIDogL2luc3RhbmNlcy8ke2NvbmZpZy5pbnN0YW5jZX0vZW5hYmxlZDxicj4gIG1ldGhvZCA6IERFTEVURTwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0NDI2ODAsPGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdkaXNhYmxlSW5zdGFuY2UnLDxicj4gICd0eXBlJzogJ3JlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2FwaSc6ICcvaW5zdGFuY2VzLyR7Y29uZmlnLmluc3RhbmNlfS9lbmFibGVkJyw8YnI+ICAgICdtZXRob2QnOiAnREVMRVRFJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Other (request):<br><pre>     api : /instances/${config.instance}/enabled<br>  method : DELETE</pre>"
 
         </div>
     </div>
@@ -83,7 +109,9 @@
         Formula Configuration
     </h2>
     <div class="container">
-        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>Health Check</td></tr><tr><td>Single Threaded?</td><td>False</td></tr><tr><td>Active?</td><td>True</td></tr><tr><td>Number of Steps</td><td>2</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table><br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>instance</td><td>instance</td><td>True</td></tr></table><br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>email</td><td>email</td><td>True</td></tr></table><br/>
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>HealthCheck</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>5</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>instance</td><td>instance</td><td>true</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>email</td><td>email</td><td>true</td></tr><tr><td>object</td><td>object</td><td>false</td></tr></table><br/>
     </div>
     <div class="key">
         <h2>
@@ -121,27 +149,27 @@
                     <div class="mermaid">
                         graph TD
                         A>GET]
-                        style A fill:#0f6ab4;
+                        style A stroke:#0f6ab4;
                     </div>
                     <div class="mermaid">
                         graph TD
                         B>POST]
-                        style B fill:#10a54a;
+                        style B stroke:#10a54a;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PATCH]
-                        style C fill:#D38042;
+                        style C stroke:#D38042;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PUT]
-                        style C fill:#C5862B;
+                        style C stroke:#C5862B;
                     </div>
                     <div class="mermaid">
                         graph TD
                         D>DELETE]
-                        style D fill:#a41e22,fill-opacity:0.8;
+                        style D stroke:#a41e22;
                     </div>
                 </td>
             </tr>
@@ -201,7 +229,7 @@
         </table>
     </div>
     <div>
-        <br>
+        <br><br>
     </div>
 </body>
 </html>
