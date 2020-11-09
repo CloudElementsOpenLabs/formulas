@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>StreamImageBetweenElements</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>
+        var callback = function(){}
+    </script>
+    <style>
+        div.mermaidTooltip {
+                    margin-left: 50px;
+                    text-align: left;
+                    max-width: none;
+                }
+        .node rect,
+        .node circle,
+        .node ellipse,
+        .node polygon {
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
+                    stroke-width: 2px;
+                }
+        .mermaid .label {
+                  max-width: 50px;
+                }
+        table, th, td {
+                    border: 1px solid black;
+                }
+        table {
+                    border-spacing: 5px;
+                    border-radius: 5px;
+                    margin: auto;
+                }
+        th, td {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    border-radius: 5px;
+                }
+        th {
+                    color: blue;
+                }
+        td {
+                    width: 180px;
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                }
+        h2 {
+                    text-align: center;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 1em;
+                }
+        .container {
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
+                }
+    </style>
+</head>
+<body>
+    <h2>
+        StreamImageBetweenElements
+    </h2>
+    <div class="container">
+        <div class="mermaid">
+            graph TD
+
+                step-000((Trigger))
+            step-001(constructQueriesAndHeaders)
+            step-002[StreamFromBoxToKnowledgeOwl]
+            step-003((END))
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-002-. done .->step-003
+
+                style step-003 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuYm94fTxicj4gICAgICAgICAgICAgICB0eXBlIDogZXZlbnQ8YnI+ICAgICAgICAgICAgICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogMzc0NDEsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjb25zdHJ1Y3RRdWVyaWVzQW5kSGVhZGVycyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAndHlwZSc6ICdldmVudCcsPGJyPiAgJ2FzeW5jJzogdHJ1ZSw8YnI+ICAnbmFtZSc6ICd0cmlnZ2VyJyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5ib3h9Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Trigger Element:<br><pre>  elementInstanceId : ${config.box}<br>               type : event<br>              async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNvbnN0cnVjdFF1ZXJpZXNBbmRIZWFkZXJzPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmNvbnN0IGRvd25sb2FkUXVlcnkgPSBgP3BhdGg9JHt0cmlnZ2VyLmV2ZW50Lm5ld1BhdGh9YDs8YnI+PGJyPmNvbnN0IGRvd25sb2FkSGVhZGVycyA9IHs8YnI+ICAnY29udGVudC10eXBlJzogJ211bHRpcGFydC9mb3JtLWRhdGEnLDxicj4gICdhY2NlcHQnOiAnKi8qJzxicj59Ozxicj48YnI+Y29uc3QgdXBsb2FkUXVlcnkgPSB7PGJyPiAgJ3Byb2plY3RfaWQnOiBjb25maWcucHJvamVjdElkLDxicj4gICduYW1lJzogY29uZmlnLm5hbWU8YnI+fTs8YnI+PGJyPmNvbnN0IHVwbG9hZEhlYWRlcnMgPSB7PGJyPiAgJ2NvbnRlbnQtdHlwZSc6ICdhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0nLDxicj4gICdhY2NlcHQnOiAnKi8qJzxicj59Ozxicj48YnI+ZG9uZSh7PGJyPiAgJ2Rvd25sb2FkSGVhZGVycyc6IGRvd25sb2FkSGVhZGVycyw8YnI+ICAndXBsb2FkSGVhZGVycyc6IHVwbG9hZEhlYWRlcnMsPGJyPiAgJ2Rvd25sb2FkUXVlcnknOiBkb3dubG9hZFF1ZXJ5LDxicj4gICd1cGxvYWRRdWVyeSc6IHVwbG9hZFF1ZXJ5PGJyPn0pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0Mzk5OTEsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdTdHJlYW1Gcm9tQm94VG9Lbm93bGVkZ2VPd2wnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnY29uc3RydWN0UXVlcmllc0FuZEhlYWRlcnMnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdjb25zdCBkb3dubG9hZFF1ZXJ5ID0gYD9wYXRoPSR7dHJpZ2dlci5ldmVudC5uZXdQYXRofWA7XG5cbmNvbnN0IGRvd25sb2FkSGVhZGVycyA9IHtcbiAgXCdjb250ZW50LXR5cGVcJzogXCdtdWx0aXBhcnQvZm9ybS1kYXRhXCcsXG4gIFwnYWNjZXB0XCc6IFwnKi8qXCdcbn07XG5cbmNvbnN0IHVwbG9hZFF1ZXJ5ID0ge1xuICBcJ3Byb2plY3RfaWRcJzogY29uZmlnLnByb2plY3RJZCxcbiAgXCduYW1lXCc6IGNvbmZpZy5uYW1lXG59O1xuXG5jb25zdCB1cGxvYWRIZWFkZXJzID0ge1xuICBcJ2NvbnRlbnQtdHlwZVwnOiBcJ2FwcGxpY2F0aW9uL29jdGV0LXN0cmVhbVwnLFxuICBcJ2FjY2VwdFwnOiBcJyovKlwnXG59O1xuXG5kb25lKHtcbiAgXCdkb3dubG9hZEhlYWRlcnNcJzogZG93bmxvYWRIZWFkZXJzLFxuICBcJ3VwbG9hZEhlYWRlcnNcJzogdXBsb2FkSGVhZGVycyxcbiAgXCdkb3dubG9hZFF1ZXJ5XCc6IGRvd25sb2FkUXVlcnksXG4gIFwndXBsb2FkUXVlcnlcJzogdXBsb2FkUXVlcnlcbn0pOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>const downloadQuery = `?path=${trigger.event.newPath}`;<br><br>const downloadHeaders = {<br>  'content-type': 'multipart/form-data',<br>  'accept': '*/*'<br>};<br><br>const uploadQuery = {<br>  'project_id': config.projectId,<br>  'name': config.name<br>};<br><br>const uploadHeaders = {<br>  'content-type': 'application/octet-stream',<br>  'accept': '*/*'<br>};<br><br>done({<br>  'downloadHeaders': downloadHeaders,<br>  'uploadHeaders': uploadHeaders,<br>  'downloadQuery': downloadQuery,<br>  'uploadQuery': uploadQuery<br>});</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPlN0cmVhbUZyb21Cb3hUb0tub3dsZWRnZU93bDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPk90aGVyIChlbGVtZW50UmVxdWVzdFN0cmVhbSk6PC9iPjxicj48YnI+PHByZT4gICAgdXBsb2FkRWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5Lbm93bGVkZ2VPd2x9PGJyPiAgICAgICAgICAgICAgICAgIHVwbG9hZEFwaSA6IC9maWxlczxicj4gICAgICAgICAgICAgZG93bmxvYWRNZXRob2QgOiBHRVQ8YnI+ICAgICAgICAgICAgZG93bmxvYWRIZWFkZXJzIDogJHtzdGVwcy5jb25zdHJ1Y3RRdWVyaWVzQW5kSGVhZGVycy5kb3dubG9hZEhlYWRlcnN9PGJyPiAgICAgICAgICAgICAgICBkb3dubG9hZEFwaSA6IC9maWxlcyR7c3RlcHMuY29uc3RydWN0UXVlcmllc0FuZEhlYWRlcnMuZG93bmxvYWRRdWVyeX08YnI+ICAgICAgICAgdXBsb2FkRm9ybURhdGFOYW1lIDogPGJyPiAgICAgICAgICAgICAgIHVwbG9hZE1ldGhvZCA6IFBPU1Q8YnI+ICAgICAgICAgICAgIHVwbG9hZEZvcm1EYXRhIDogPGJyPiAgICAgICAgICAgICAgdXBsb2FkSGVhZGVycyA6ICR7c3RlcHMuY29uc3RydWN0UXVlcmllc0FuZEhlYWRlcnMudXBsb2FkSGVhZGVyc308YnI+ICBkb3dubG9hZEVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuYm94fTxicj4gICAgICAgICAgICAgICAgdXBsb2FkUXVlcnkgOiAke3N0ZXBzLmNvbnN0cnVjdFF1ZXJpZXNBbmRIZWFkZXJzLnVwbG9hZFF1ZXJ5fTxicj4gICAgICAgICAgICAgIGRvd25sb2FkUXVlcnkgOiA8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDQwMTgzLDxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnU3RyZWFtRnJvbUJveFRvS25vd2xlZGdlT3dsJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdFN0cmVhbScsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAndXBsb2FkRWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuS25vd2xlZGdlT3dsfScsPGJyPiAgICAndXBsb2FkQXBpJzogJy9maWxlcycsPGJyPiAgICAnZG93bmxvYWRNZXRob2QnOiAnR0VUJyw8YnI+ICAgICdkb3dubG9hZEhlYWRlcnMnOiAnJHtzdGVwcy5jb25zdHJ1Y3RRdWVyaWVzQW5kSGVhZGVycy5kb3dubG9hZEhlYWRlcnN9Jyw8YnI+ICAgICdkb3dubG9hZEFwaSc6ICcvZmlsZXMke3N0ZXBzLmNvbnN0cnVjdFF1ZXJpZXNBbmRIZWFkZXJzLmRvd25sb2FkUXVlcnl9Jyw8YnI+ICAgICd1cGxvYWRGb3JtRGF0YU5hbWUnOiAnJyw8YnI+ICAgICd1cGxvYWRNZXRob2QnOiAnUE9TVCcsPGJyPiAgICAndXBsb2FkRm9ybURhdGEnOiAnJyw8YnI+ICAgICd1cGxvYWRIZWFkZXJzJzogJyR7c3RlcHMuY29uc3RydWN0UXVlcmllc0FuZEhlYWRlcnMudXBsb2FkSGVhZGVyc30nLDxicj4gICAgJ2Rvd25sb2FkRWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuYm94fScsPGJyPiAgICAndXBsb2FkUXVlcnknOiAnJHtzdGVwcy5jb25zdHJ1Y3RRdWVyaWVzQW5kSGVhZGVycy51cGxvYWRRdWVyeX0nLDxicj4gICAgJ2Rvd25sb2FkUXVlcnknOiAnJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Other (elementRequestStream):<br><pre>    uploadElementInstanceId : ${config.KnowledgeOwl}<br>                  uploadApi : /files<br>             downloadMethod : GET<br>            downloadHeaders : ${steps.constructQueriesAndHeaders.downloadHeaders}<br>                downloadApi : /files${steps.constructQueriesAndHeaders.downloadQuery}<br>         uploadFormDataName : <br>               uploadMethod : POST<br>             uploadFormData : <br>              uploadHeaders : ${steps.constructQueriesAndHeaders.uploadHeaders}<br>  downloadElementInstanceId : ${config.box}<br>                uploadQuery : ${steps.constructQueriesAndHeaders.uploadQuery}<br>              downloadQuery : </pre>"
+
+        </div>
+    </div>
+    <h2>
+        Formula Configuration
+    </h2>
+    <div class="container">
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>StreamImageBetweenElements</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>2</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>box</td><td>box</td><td>true</td></tr><tr><td>KnowledgeOwl</td><td>KnowledgeOwl</td><td>true</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>name</td><td>name</td><td>true</td></tr><tr><td>projectId</td><td>projectId</td><td>true</td></tr></table><br/>
+    </div>
+    <div class="key">
+        <h2>
+            Key
+        </h2>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+            </tr>
+
+            <tr>
+                <td>Filter Steps</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A{Step Name}
+                    </div>
+                </td>
+                <td>Trigger/End</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        B((Actual))
+                        C((Generated))
+                        style C stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Request Step</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A>GET]
+                        style A stroke:#0f6ab4;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        B>POST]
+                        style B stroke:#10a54a;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PATCH]
+                        style C stroke:#D38042;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PUT]
+                        style C stroke:#C5862B;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        D>DELETE]
+                        style D stroke:#a41e22;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Script</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(Step Name)
+                    </div>
+                </td>
+                <td>Loop</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(-Step Name-)
+                    </div>
+                </td>
+                <td>Other(TYPE)</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D[Step Name]
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Pass/Fail Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL-->BL
+                    </div>
+                </td>
+                <td>Generated Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL((B))
+                        AL-.->BL
+                        style BL stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Continue Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL==>BL
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>
