@@ -19,7 +19,7 @@
 1. Insure you have the latest non-beta version of the doctor installed via npm. You can follow the directions found [here](https://www.npmjs.com/package/ce-util) or run the command `npm install -g ce-util`. You'll need a version of node that is >= v6.3.0. You will need to upload the file from TheDoctor directory, as files uploaded with the doctor have a different structure than files imported via UI.
 2. From the TheDoctor directory, run the command:
   ```
-  doctor upload formulas <acctNickName> -f Loop_Step_Aggregation.json
+  doctor upload formulas <acctNickName> -f brokenFormula.json
   ```
   This will upload the Broken Formula into the specified account.
 
