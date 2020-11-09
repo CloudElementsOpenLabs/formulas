@@ -2,7 +2,7 @@
   {
     "id": 41343,
     "name": "StreamImageBetweenElements",
-    "debugLoggingExpires": "2020-11-06T04:52:44Z",
+    "debugLoggingExpires": "2020-11-10T04:27:13Z",
     "userId": 62973,
     "accountId": 48093,
     "createdDate": "2020-10-25T00:10:34Z",
@@ -16,7 +16,7 @@
         "name": "constructQueriesAndHeaders",
         "type": "script",
         "properties": {
-          "body": "const downloadQuery = `?path=${trigger.event.newPath}`;\n\nconst downloadHeaders = {\n  \"content-type\": \"multipart/form-data\",\n  \"accept\": \"*/*\"\n};\n\nconst uploadQuery = {\n  \"project_id\": config.projectId,\n  \"name\": config.name\n};\n\nconst uploadHeaders = {\n  \"content-type\": \"application/octet-stream\",\n  \"accept\": \"*/*\"\n};\n\ndone({\n  \"downloadHeaders\": downloadHeaders,\n  \"uploadHeaders\": uploadHeaders,\n  \"downloadQuery\": downloadQuery,\n  \"uploadQuery\": uploadQuery\n});"
+          "body": "const downloadQuery = `?path=${trigger.event.newPath}`;\nconst newPathArray = trigger.event.newPath.split('/');\nconst fileName = newPathArray[newPathArray.length - 1];\n\nconst downloadHeaders = {\n  \"content-type\": \"multipart/form-data\",\n  \"accept\": \"*/*\"\n};\n\nconst uploadQuery = {\n  \"project_id\": config.projectId,\n  \"name\": fileName\n};\n\nconst uploadHeaders = {\n  \"content-type\": \"application/octet-stream\",\n  \"accept\": \"*/*\"\n};\n\ndone({ downloadHeaders, uploadHeaders, downloadQuery, uploadQuery });"
         }
       },
       {
@@ -26,18 +26,18 @@
         "name": "StreamFromBoxToKnowledgeOwl",
         "type": "elementRequestStream",
         "properties": {
-          "uploadElementInstanceId": "${config.KnowledgeOwl}",
-          "downloadElementInstanceId": "${config.box}",
-          "uploadMethod": "POST",
-          "uploadHeaders": "${steps.constructQueriesAndHeaders.uploadHeaders}",
-          "uploadFormData": "",
-          "uploadQuery": "${steps.constructQueriesAndHeaders.uploadQuery}",
           "downloadHeaders": "${steps.constructQueriesAndHeaders.downloadHeaders}",
+          "downloadQuery": "",
+          "uploadElementInstanceId": "${config.KnowledgeOwl}",
+          "uploadQuery": "${steps.constructQueriesAndHeaders.uploadQuery}",
+          "uploadHeaders": "${steps.constructQueriesAndHeaders.uploadHeaders}",
+          "uploadMethod": "POST",
           "uploadApi": "/files",
           "downloadMethod": "GET",
-          "downloadQuery": "",
+          "downloadApi": "/files${steps.constructQueriesAndHeaders.downloadQuery}",
           "uploadFormDataName": "",
-          "downloadApi": "/files${steps.constructQueriesAndHeaders.downloadQuery}"
+          "uploadFormData": "",
+          "downloadElementInstanceId": "${config.box}"
         }
       }
     ],
@@ -58,8 +58,8 @@
     ],
     "engine": "v3",
     "active": true,
-    "debugLoggingEnabled": true,
     "singleThreaded": false,
+    "debugLoggingEnabled": true,
     "configuration": [
       {
         "id": 81696,
@@ -74,14 +74,6 @@
         "name": "KnowledgeOwl",
         "type": "elementInstance",
         "description": "fdasfsd",
-        "required": true
-      },
-      {
-        "id": 82228,
-        "key": "name",
-        "name": "name",
-        "type": "value",
-        "description": "Enter the name of the file for storage in Knowledge Owl.",
         "required": true
       },
       {
