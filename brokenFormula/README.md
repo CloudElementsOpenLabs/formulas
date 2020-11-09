@@ -23,7 +23,7 @@
   ```
   This will upload the Broken Formula into the specified account.
 
-3. You can now interact with the formula in the UI. You can update the `aggregator` step as needed. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
+3. You can now interact with the formula in the UI. Use the `TRY IT OUT` button to select (and/or create) a formula instance, as well as the Element instance (CRM) you want to use. Then run the formula.
 
 
 ## Solution:
