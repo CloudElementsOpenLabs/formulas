@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Health Check</title>
+    <title>HealthCheck</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -18,8 +18,8 @@
         .node circle,
         .node ellipse,
         .node polygon {
-                    fill: #cde498;
-                    stroke: #333;
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
                     stroke-width: 2px;
                 }
         .mermaid .label {
@@ -44,38 +44,72 @@
         td {
                     width: 180px;
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
                 }
         h2 {
                     text-align: center;
-                    color: red;
                     border: 1px solid black;
                     border-radius: 5px;
                     padding: 1em;
                 }
         .container {
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
                 }
     </style>
 </head>
 <body>
     <h2>
-        Health Check
+        HealthCheck
     </h2>
     <div class="container">
         <div class="mermaid">
             graph TD
-            step-000((Trigger))
-            step-001>test]
-            step-002(sendEmail)
-            step-003((END))
-            step-000== continue ==>step-001
-            step-001-- failure -->step-002
-            step-002-. done .->step-003
-            style step-001 fill:#0f6ab4;
-            style step-003 stroke-width:3px,stroke-dasharray: 5, 5;
-            click step-000 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT5UcmlnZ2VyIEVsZW1lbnQ6PGJyPjxicj48cHJlPiAgYXN5bmMgOiBUcnVlPGJyPiAgIGNyb24gOiAwIDAvMTUgKiAxLzEgKiA/ICo8YnI+ICAgdHlwZSA6IHNjaGVkdWxlZDwvcHJlPjxicj5SQVcgSlNPTjo8YnI+PGJyPjxwcmU+ezxicj4gICduYW1lJzogJ3RyaWdnZXInLCA8YnI+ICAnb25GYWlsdXJlJzogW10sIDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAndGVzdCc8YnI+ICBdLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdjcm9uJzogJzAgMC8xNSAqIDEvMSAqID8gKic8YnI+ICB9LCA8YnI+ICAnYXN5bmMnOiB0cnVlLCA8YnI+ICAndHlwZSc6ICdzY2hlZHVsZWQnLCA8YnI+ICAnaWQnOiAxNzczNDxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4=" "Trigger Element:<br><pre>  async : True<br>   cron : 0 0/15 * 1/1 * ? *<br>   type : scheduled</pre>"
-            click step-001 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnRlc3Q8L3RpdGxlPjwvaGVhZD48Ym9keT5SZXF1ZXN0Ojxicj48YnI+PHByZT4gICAgICAgICAgICAgICAgYXBpIDogL2FjY291bnRzPGJyPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5pbnN0YW5jZX08YnI+ICAgICAgICAgICAgIG1ldGhvZCA6IEdFVDwvcHJlPjxicj5SQVcgSlNPTjo8YnI+PGJyPjxwcmU+ezxicj4gICduYW1lJzogJ3Rlc3QnLCA8YnI+ICAnb25GYWlsdXJlJzogWzxicj4gICAgJ3NlbmRFbWFpbCc8YnI+ICBdLCA8YnI+ICAnb25TdWNjZXNzJzogW10sIDxicj4gICdpZCc6IDEwMzI4OSwgPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5pbnN0YW5jZX0nLCA8YnI+ICAgICdhcGknOiAnL2FjY291bnRzJywgPGJyPiAgICAnbWV0aG9kJzogJ0dFVCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg==" "Request:<br><pre>                api : /accounts<br>  elementInstanceId : ${config.instance}<br>             method : GET</pre>"
-            click step-002 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnNlbmRFbWFpbDwvdGl0bGU+PC9oZWFkPjxib2R5PkphdmFTY3JpcHQ6PGJyPjxicj48cHJlPm5vdGlmeS5lbWFpbChgJHtjb25maWcuZW1haWx9YCxgaW5zdGFuY2UgZmFpbHVyZWAsIGBBbiBBUEkgY2FsbCB0byBTQVAgQjEgaGFzIGZhaWxlZCB3aXRoIGVycm9yOiAke0pTT04uc3RyaW5naWZ5KHN0ZXBzLnRlc3QucmVzcG9uc2UuYm9keSl9LiBPbiBpbnN0YW5jZSBJRDogJHtjb25maWcuaW5zdGFuY2V9YCk7PGJyPjxicj5kb25lKCk7PC9wcmU+PGJyPlJBVyBKU09OOjxicj48YnI+PHByZT57PGJyPiAgJ25hbWUnOiAnc2VuZEVtYWlsJywgPGJyPiAgJ29uRmFpbHVyZSc6IFtdLCA8YnI+ICAnb25TdWNjZXNzJzogW10sIDxicj4gICdpZCc6IDEwMzI5OCwgPGJyPiAgJ3R5cGUnOiAnc2NyaXB0JywgPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdub3RpZnkuZW1haWwoYCR7Y29uZmlnLmVtYWlsfWAsYGluc3RhbmNlIGZhaWx1cmVgLCBgQW4gQVBJIGNhbGwgdG8gU0FQIEIxIGhhcyBmYWlsZWQgd2l0aCBlcnJvcjogJHtKU09OLnN0cmluZ2lmeShzdGVwcy50ZXN0LnJlc3BvbnNlLmJvZHkpfS4gT24gaW5zdGFuY2UgSUQ6ICR7Y29uZmlnLmluc3RhbmNlfWApO1xuXG5kb25lKCk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+" "JavaScript:<br><pre>notify.email(`${config.email}`,`instance failure`, `An API call to SAP B1 has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);<br><br>done();</pre>"
+
+                step-000((Trigger))
+            step-001(getEndpoint)
+            step-002>checkHealth]
+            step-003(logSucess)
+            step-009((END))
+            step-005>disableElementInstance]
+            step-006{deactivateFormulaInstance}
+            step-007>deactivateFormulaTrue]
+            step-008(sendEmail)
+            step-009((END))
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-002-- success -->step-003
+            step-002-- failure -->step-005
+            step-003-. done .->step-009
+            step-005-- success -->step-006
+            step-006-- success -->step-007
+            step-006-- failure -->step-008
+            step-007-- success -->step-008
+            step-008-. done .->step-009
+
+                style step-002 stroke:#0f6ab4;
+            style step-009 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-005 stroke:#a41e22;
+            style step-007 stroke:#a41e22;
+            style step-009 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gICBjcm9uIDogMCAwLzE1ICogMS8xICogPyAqPGJyPiAgIHR5cGUgOiBzY2hlZHVsZWQ8YnI+ICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogMzcxMTYsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZXRFbmRwb2ludCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAndHlwZSc6ICdzY2hlZHVsZWQnLDxicj4gICdhc3luYyc6IHRydWUsPGJyPiAgJ25hbWUnOiAndHJpZ2dlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnY3Jvbic6ICcwIDAvMTUgKiAxLzEgKiA/IConPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Trigger Element:<br><pre>   cron : 0 0/15 * 1/1 * ? *<br>   type : scheduled<br>  async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldEVuZHBvaW50PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoY29uZmlnLm9iamVjdCB8fCAncGluZycpOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0NDI2ODMsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjaGVja0hlYWx0aCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdnZXRFbmRwb2ludCcsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2RvbmUoY29uZmlnLm9iamVjdCB8fCBcJ3BpbmdcJyk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done(config.object || 'ping');</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrSGVhbHRoPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+UmVxdWVzdDo8L2I+PGJyPjxicj48cHJlPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5pbnN0YW5jZX08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC8ke3N0ZXBzLmdldEVuZHBvaW50fTxicj4gICAgICAgICAgICAgbWV0aG9kIDogR0VUPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDQzNTcwOCw8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2xvZ1N1Y2Vzcyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZGlzYWJsZUVsZW1lbnRJbnN0YW5jZSc8YnI+ICBdLDxicj4gICduYW1lJzogJ2NoZWNrSGVhbHRoJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnZWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuaW5zdGFuY2V9Jyw8YnI+ICAgICdhcGknOiAnLyR7c3RlcHMuZ2V0RW5kcG9pbnR9Jyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Request:<br><pre>  elementInstanceId : ${config.instance}<br>                api : /${steps.getEndpoint}<br>             method : GET</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmxvZ1N1Y2VzczwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT4vLyBUaGlzIHdvdWxkIGJlIHdoYXQgaGFwcGVucyB3aGVuIGEgc3VjY2Vzc2Z1bCBjYWxsIGlzIG1hZGUuPGJyPmRvbmUoe3N1Y2Nlc3M6IHRydWV9KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDQyNjgxLDxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnbG9nU3VjZXNzJyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnLy8gVGhpcyB3b3VsZCBiZSB3aGF0IGhhcHBlbnMgd2hlbiBhIHN1Y2Nlc3NmdWwgY2FsbCBpcyBtYWRlLlxuZG9uZSh7c3VjY2VzczogdHJ1ZX0pOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>// This would be what happens when a successful call is made.<br>done({success: true});</pre>"
+            click step-005 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmRpc2FibGVFbGVtZW50SW5zdGFuY2U8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5PdGhlciAocmVxdWVzdCk6PC9iPjxicj48YnI+PHByZT4gICAgIGFwaSA6IC9pbnN0YW5jZXMvJHtjb25maWcuaW5zdGFuY2V9L2VuYWJsZWQ8YnI+ICBtZXRob2QgOiBERUxFVEU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDQyNjgwLDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnZGVhY3RpdmF0ZUZvcm11bGFJbnN0YW5jZSc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdkaXNhYmxlRWxlbWVudEluc3RhbmNlJyw8YnI+ICAndHlwZSc6ICdyZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdhcGknOiAnL2luc3RhbmNlcy8ke2NvbmZpZy5pbnN0YW5jZX0vZW5hYmxlZCcsPGJyPiAgICAnbWV0aG9kJzogJ0RFTEVURSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Other (request):<br><pre>     api : /instances/${config.instance}/enabled<br>  method : DELETE</pre>"
+            click step-006 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmRlYWN0aXZhdGVGb3JtdWxhSW5zdGFuY2U8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+ZG9uZShjb25maWcuZGVhY3RpdmF0ZUZvcm11bGFJbnN0YW5jZSk7PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDQ0MzgxNCw8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2RlYWN0aXZhdGVGb3JtdWxhVHJ1ZSc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnc2VuZEVtYWlsJzxicj4gIF0sPGJyPiAgJ25hbWUnOiAnZGVhY3RpdmF0ZUZvcm11bGFJbnN0YW5jZScsPGJyPiAgJ3R5cGUnOiAnZmlsdGVyJyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2RvbmUoY29uZmlnLmRlYWN0aXZhdGVGb3JtdWxhSW5zdGFuY2UpOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(config.deactivateFormulaInstance);</pre>"
+            click step-007 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmRlYWN0aXZhdGVGb3JtdWxhVHJ1ZTwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPk90aGVyIChyZXF1ZXN0KTo8L2I+PGJyPjxicj48cHJlPiAgICAgYXBpIDogL2Zvcm11bGFzLyR7aW5mby5mb3JtdWxhSWR9L2luc3RhbmNlcy8ke2luZm8uZm9ybXVsYUluc3RhbmNlSWR9L2FjdGl2ZTxicj4gIG1ldGhvZCA6IERFTEVURTwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0NDQ5NjMsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdzZW5kRW1haWwnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZGVhY3RpdmF0ZUZvcm11bGFUcnVlJyw8YnI+ICAndHlwZSc6ICdyZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdhcGknOiAnL2Zvcm11bGFzLyR7aW5mby5mb3JtdWxhSWR9L2luc3RhbmNlcy8ke2luZm8uZm9ybXVsYUluc3RhbmNlSWR9L2FjdGl2ZScsPGJyPiAgICAnbWV0aG9kJzogJ0RFTEVURSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Other (request):<br><pre>     api : /formulas/${info.formulaId}/instances/${info.formulaInstanceId}/active<br>  method : DELETE</pre>"
+            click step-008 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnNlbmRFbWFpbDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5jb25zdCBzdGFuZGFyZFN1YmplY3QgPSAnRWxlbWVudCBJbnN0YW5jZSBEZWFjdGl2YXRlZCc7PGJyPmNvbnN0IHN0YW5kYXJkTWVzc2FnZSA9IGBBbiBBUEkgY2FsbCB0byBhbiBFbGVtZW50IHdpdGggRWxlbWVudCBJbnN0YW5jZSBJZCAke2NvbmZpZy5pbnN0YW5jZX0gaGFzIGZhaWxlZCB3aXRoIGVycm9yOiAke0pTT04uc3RyaW5naWZ5KHN0ZXBzLmNoZWNrSGVhbHRoLnJlc3BvbnNlLmJvZHkpfSBhbmQgc3RhdHVzIGNvZGU6ICR7SlNPTi5zdHJpbmdpZnkoc3RlcHMuY2hlY2tIZWFsdGgucmVzcG9uc2UuY29kZSl9LiBUaGlzIGVsZW1lbnQgaW5zdGFuY2UgaGFzIGJlZW4gZGlzYWJsZWQuIFlvdSBjYW4gcmUtZW5hYmxlIHRoaXMgaW5zdGFuY2UgdmlhIHRoZSBQVVQgL2luc3RhbmNlcy97aWR9L2VuYWJsZWQgQVBJIGZvdW5kIGluIHRoZSBQbGF0Zm9ybSBBUEkgZG9jcy5gPGJyPmlmIChzdGVwcy5kZWFjdGl2YXRlRm9ybXVsYUluc3RhbmNlKSB7PGJyPiAgbm90aWZ5LmVtYWlsKGNvbmZpZy5lbWFpbCwgc3RhbmRhcmRTdWJqZWN0LCBgJHtzdGFuZGFyZE1lc3NhZ2V9IFRoZSBhc3NvY2lhdGVkIEZvcm11bGEgaW5zdGFuY2Ugd2l0aCBpbnN0YW5jZSBpZCAke2luZm8uZm9ybXVsYUluc3RhbmNlSWR9IGZvciB0aGUgRm9ybXVsYSAke2luZm8uZm9ybXVsYU5hbWV9IGhhcyBhbHNvIGJlZW4gZGVhY3RpdmF0ZWQuIFlvdSBjYW4gcmUtZW5hYmxlIHRoZSBGb3JtdWxhIGluc3RhbmNlIHZpYSB0aGUgUFVUIC9mb3JtdWxhcy97aWR9L2luc3RhbmNlcy97aW5zdGFuY2VJZH0vYWN0aXZlIEFQSSwgYm90aCBmb3VuZCBpbiB0aGUgUGxhdGZvcm0gQVBJIGRvY3MuYCk7PGJyPn0gZWxzZSB7PGJyPiAgbm90aWZ5LmVtYWlsKGNvbmZpZy5lbWFpbCwgc3RhbmRhcmRTdWJqZWN0LCBzdGFuZGFyZE1lc3NhZ2UpOzxicj59PGJyPmRvbmUoeyBzdWNjZXNzOiB0cnVlIH0pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0MzU3MDcsPGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdzZW5kRW1haWwnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdjb25zdCBzdGFuZGFyZFN1YmplY3QgPSAnRWxlbWVudCBJbnN0YW5jZSBEZWFjdGl2YXRlZCc7XG5jb25zdCBzdGFuZGFyZE1lc3NhZ2UgPSBgQW4gQVBJIGNhbGwgdG8gYW4gRWxlbWVudCB3aXRoIEVsZW1lbnQgSW5zdGFuY2UgSWQgJHtjb25maWcuaW5zdGFuY2V9IGhhcyBmYWlsZWQgd2l0aCBlcnJvcjogJHtKU09OLnN0cmluZ2lmeShzdGVwcy5jaGVja0hlYWx0aC5yZXNwb25zZS5ib2R5KX0gYW5kIHN0YXR1cyBjb2RlOiAke0pTT04uc3RyaW5naWZ5KHN0ZXBzLmNoZWNrSGVhbHRoLnJlc3BvbnNlLmNvZGUpfS4gVGhpcyBlbGVtZW50IGluc3RhbmNlIGhhcyBiZWVuIGRpc2FibGVkLiBZb3UgY2FuIHJlLWVuYWJsZSB0aGlzIGluc3RhbmNlIHZpYSB0aGUgUFVUIC9pbnN0YW5jZXMve2lkfS9lbmFibGVkIEFQSSBmb3VuZCBpbiB0aGUgUGxhdGZvcm0gQVBJIGRvY3MuYFxuaWYgKHN0ZXBzLmRlYWN0aXZhdGVGb3JtdWxhSW5zdGFuY2UpIHtcbiAgbm90aWZ5LmVtYWlsKGNvbmZpZy5lbWFpbCwgc3RhbmRhcmRTdWJqZWN0LCBgJHtzdGFuZGFyZE1lc3NhZ2V9IFRoZSBhc3NvY2lhdGVkIEZvcm11bGEgaW5zdGFuY2Ugd2l0aCBpbnN0YW5jZSBpZCAke2luZm8uZm9ybXVsYUluc3RhbmNlSWR9IGZvciB0aGUgRm9ybXVsYSAke2luZm8uZm9ybXVsYU5hbWV9IGhhcyBhbHNvIGJlZW4gZGVhY3RpdmF0ZWQuIFlvdSBjYW4gcmUtZW5hYmxlIHRoZSBGb3JtdWxhIGluc3RhbmNlIHZpYSB0aGUgUFVUIC9mb3JtdWxhcy97aWR9L2luc3RhbmNlcy97aW5zdGFuY2VJZH0vYWN0aXZlIEFQSSwgYm90aCBmb3VuZCBpbiB0aGUgUGxhdGZvcm0gQVBJIGRvY3MuYCk7XG59IGVsc2Uge1xuICBub3RpZnkuZW1haWwoY29uZmlnLmVtYWlsLCBzdGFuZGFyZFN1YmplY3QsIHN0YW5kYXJkTWVzc2FnZSk7XG59XG5kb25lKHsgc3VjY2VzczogdHJ1ZSB9KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>const standardSubject = 'Element Instance Deactivated';<br>const standardMessage = `An API call to an Element with Element Instance Id ${config.instance} has failed with error: ${JSON.stringify(steps.checkHealth.response.body)} and status code: ${JSON.stringify(steps.checkHealth.response.code)}. This element instance has been disabled. You can re-enable this instance via the PUT /instances/{id}/enabled API found in the Platform API docs.`<br>if (steps.deactivateFormulaInstance) {<br>  notify.email(config.email, standardSubject, `${standardMessage} The associated Formula instance with instance id ${info.formulaInstanceId} for the Formula ${info.formulaName} has also been deactivated. You can re-enable the Formula instance via the PUT /formulas/{id}/instances/{instanceId}/active API, both found in the Platform API docs.`);<br>} else {<br>  notify.email(config.email, standardSubject, standardMessage);<br>}<br>done({ success: true });</pre>"
 
         </div>
     </div>
@@ -83,7 +117,9 @@
         Formula Configuration
     </h2>
     <div class="container">
-        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>Health Check</td></tr><tr><td>Single Threaded?</td><td>False</td></tr><tr><td>Active?</td><td>True</td></tr><tr><td>Number of Steps</td><td>2</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table><br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>instance</td><td>instance</td><td>True</td></tr></table><br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>email</td><td>email</td><td>True</td></tr></table><br/>
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>HealthCheck</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>7</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>instance</td><td>instance</td><td>true</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>deactivateFormulaInstance</td><td>deactivateFormulaInstance</td><td>true</td></tr><tr><td>email</td><td>email</td><td>true</td></tr><tr><td>object</td><td>object</td><td>false</td></tr></table><br/>
     </div>
     <div class="key">
         <h2>
@@ -121,27 +157,27 @@
                     <div class="mermaid">
                         graph TD
                         A>GET]
-                        style A fill:#0f6ab4;
+                        style A stroke:#0f6ab4;
                     </div>
                     <div class="mermaid">
                         graph TD
                         B>POST]
-                        style B fill:#10a54a;
+                        style B stroke:#10a54a;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PATCH]
-                        style C fill:#D38042;
+                        style C stroke:#D38042;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PUT]
-                        style C fill:#C5862B;
+                        style C stroke:#C5862B;
                     </div>
                     <div class="mermaid">
                         graph TD
                         D>DELETE]
-                        style D fill:#a41e22,fill-opacity:0.8;
+                        style D stroke:#a41e22;
                     </div>
                 </td>
             </tr>
@@ -201,7 +237,7 @@
         </table>
     </div>
     <div>
-        <br>
+        <br><br><br><br><br><br>
     </div>
 </body>
 </html>

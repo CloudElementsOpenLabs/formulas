@@ -1,42 +1,106 @@
 [
   {
-    "id": 40971,
+    "id": 41028,
     "name": "HealthCheck",
-    "debugLoggingExpires": "2020-10-10T04:41:16Z",
+    "debugLoggingExpires": "2020-11-09T20:26:59Z",
     "userId": 62973,
     "accountId": 48093,
-    "createdDate": "2020-10-09T20:41:16Z",
+    "createdDate": "2020-10-12T16:02:59Z",
     "steps": [
       {
-        "id": 434824,
+        "id": 435708,
+        "onSuccess": [
+          "logSucess"
+        ],
+        "onFailure": [
+          "disableElementInstance"
+        ],
+        "name": "checkHealth",
+        "type": "elementRequest",
+        "properties": {
+          "elementInstanceId": "${config.instance}",
+          "api": "/${steps.getEndpoint}",
+          "method": "GET"
+        }
+      },
+      {
+        "id": 443814,
+        "onSuccess": [
+          "deactivateFormulaTrue"
+        ],
+        "onFailure": [
+          "sendEmail"
+        ],
+        "name": "deactivateFormulaInstance",
+        "type": "filter",
+        "properties": {
+          "body": "done(config.deactivateFormulaInstance);"
+        }
+      },
+      {
+        "id": 444963,
+        "onSuccess": [
+          "sendEmail"
+        ],
+        "onFailure": [],
+        "name": "deactivateFormulaTrue",
+        "type": "request",
+        "properties": {
+          "api": "/formulas/${info.formulaId}/instances/${info.formulaInstanceId}/active",
+          "method": "DELETE"
+        }
+      },
+      {
+        "id": 442680,
+        "onSuccess": [
+          "deactivateFormulaInstance"
+        ],
+        "onFailure": [],
+        "name": "disableElementInstance",
+        "type": "request",
+        "properties": {
+          "api": "/instances/${config.instance}/enabled",
+          "method": "DELETE"
+        }
+      },
+      {
+        "id": 442683,
+        "onSuccess": [
+          "checkHealth"
+        ],
+        "onFailure": [],
+        "name": "getEndpoint",
+        "type": "script",
+        "properties": {
+          "body": "done(config.object || \"ping\");"
+        }
+      },
+      {
+        "id": 442681,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "logSucess",
+        "type": "script",
+        "properties": {
+          "body": "// This would be what happens when a successful call is made.\ndone({success: true});"
+        }
+      },
+      {
+        "id": 435707,
         "onSuccess": [],
         "onFailure": [],
         "name": "sendEmail",
         "type": "script",
         "properties": {
-          "body": "notify.email(`${config.email}`,`instance failure`, `An API call to ElementNameHere has failed with error: ${JSON.stringify(steps.test.response.body)}. On instance ID: ${config.instance}`);\n\ndone();"
-        }
-      },
-      {
-        "id": 434825,
-        "onSuccess": [],
-        "onFailure": [
-          "sendEmail"
-        ],
-        "name": "test",
-        "type": "elementRequest",
-        "properties": {
-          "api": "/ping",
-          "elementInstanceId": "${config.instance}",
-          "method": "GET"
+          "body": "const standardSubject = 'Element Instance Deactivated';\nconst standardMessage = `An API call to an Element with Element Instance Id ${config.instance} has failed with error: ${JSON.stringify(steps.checkHealth.response.body)} and status code: ${JSON.stringify(steps.checkHealth.response.code)}. This element instance has been disabled. You can re-enable this instance via the PUT /instances/{id}/enabled API found in the Platform API docs.`\nif (steps.deactivateFormulaInstance) {\n  notify.email(config.email, standardSubject, `${standardMessage} The associated Formula instance with instance id ${info.formulaInstanceId} for the Formula ${info.formulaName} has also been deactivated. You can re-enable the Formula instance via the PUT /formulas/{id}/instances/{instanceId}/active API, both found in the Platform API docs.`);\n} else {\n  notify.email(config.email, standardSubject, standardMessage);\n}\ndone({ success: true });"
         }
       }
     ],
     "triggers": [
       {
-        "id": 37059,
+        "id": 37116,
         "onSuccess": [
-          "test"
+          "getEndpoint"
         ],
         "onFailure": [],
         "type": "scheduled",
@@ -49,22 +113,38 @@
     ],
     "engine": "v3",
     "active": true,
-    "debugLoggingEnabled": true,
     "singleThreaded": false,
+    "debugLoggingEnabled": true,
     "configuration": [
       {
-        "id": 80909,
+        "id": 82226,
+        "key": "deactivateFormulaInstance",
+        "name": "deactivateFormulaInstance",
+        "type": "value",
+        "description": "Would you also like to disable the Formula Instance in the case of an Element Instance failure? Enter: true or false, default is true",
+        "required": true
+      },
+      {
+        "id": 81035,
         "key": "email",
         "name": "email",
         "type": "value",
         "required": true
       },
       {
-        "id": 80910,
+        "id": 81036,
         "key": "instance",
         "name": "instance",
         "type": "elementInstance",
         "required": true
+      },
+      {
+        "id": 82083,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "description": "Enter the object you want your HealthCheck to send a request to. Default is the `ping` endpoint.",
+        "required": false
       }
     ]
   }

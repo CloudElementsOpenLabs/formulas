@@ -1,0 +1,89 @@
+[
+  {
+    "id": 41343,
+    "name": "StreamImageBetweenElements",
+    "debugLoggingExpires": "2020-11-10T04:27:13Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-10-25T00:10:34Z",
+    "steps": [
+      {
+        "id": 439991,
+        "onSuccess": [
+          "StreamFromBoxToKnowledgeOwl"
+        ],
+        "onFailure": [],
+        "name": "constructQueriesAndHeaders",
+        "type": "script",
+        "properties": {
+          "body": "const downloadQuery = `?path=${trigger.event.newPath}`;\nconst newPathArray = trigger.event.newPath.split('/');\nconst fileName = newPathArray[newPathArray.length - 1];\n\nconst downloadHeaders = {\n  \"content-type\": \"multipart/form-data\",\n  \"accept\": \"*/*\"\n};\n\nconst uploadQuery = {\n  \"project_id\": config.projectId,\n  \"name\": fileName\n};\n\nconst uploadHeaders = {\n  \"content-type\": \"application/octet-stream\",\n  \"accept\": \"*/*\"\n};\n\ndone({ downloadHeaders, uploadHeaders, downloadQuery, uploadQuery });"
+        }
+      },
+      {
+        "id": 440183,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "StreamFromBoxToKnowledgeOwl",
+        "type": "elementRequestStream",
+        "properties": {
+          "downloadHeaders": "${steps.constructQueriesAndHeaders.downloadHeaders}",
+          "downloadQuery": "",
+          "uploadElementInstanceId": "${config.KnowledgeOwl}",
+          "uploadQuery": "${steps.constructQueriesAndHeaders.uploadQuery}",
+          "uploadHeaders": "${steps.constructQueriesAndHeaders.uploadHeaders}",
+          "uploadMethod": "POST",
+          "uploadApi": "/files",
+          "downloadMethod": "GET",
+          "downloadApi": "/files${steps.constructQueriesAndHeaders.downloadQuery}",
+          "uploadFormDataName": "",
+          "uploadFormData": "",
+          "downloadElementInstanceId": "${config.box}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37441,
+        "onSuccess": [
+          "constructQueriesAndHeaders"
+        ],
+        "onFailure": [],
+        "type": "event",
+        "async": true,
+        "name": "trigger",
+        "properties": {
+          "elementInstanceId": "${config.box}"
+        }
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "singleThreaded": false,
+    "debugLoggingEnabled": true,
+    "configuration": [
+      {
+        "id": 81696,
+        "key": "box",
+        "name": "box",
+        "type": "elementInstance",
+        "required": true
+      },
+      {
+        "id": 81697,
+        "key": "KnowledgeOwl",
+        "name": "KnowledgeOwl",
+        "type": "elementInstance",
+        "description": "fdasfsd",
+        "required": true
+      },
+      {
+        "id": 82227,
+        "key": "projectId",
+        "name": "projectId",
+        "type": "value",
+        "description": "Enter the project id for the project in Knowledge Owl.",
+        "required": true
+      }
+    ]
+  }
+]
