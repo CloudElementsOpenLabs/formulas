@@ -1,0 +1,72 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "QBO Element Instance",
+            "key": "QBOElementInstance",
+            "name": "QBO Element Instance",
+            "required": true,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-10-23T02:55:38Z",
+    "engine": "v3",
+    "id": 40313,
+    "name": "brokenFormula",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEventTrigger",
+            "onFailure": [
+                "gracefulFormulaExit"
+            ],
+            "onSuccess": [
+                "retrieveEmployeeRecord"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "retrieveEmployeeRecord",
+            "onFailure": [],
+            "onSuccess": [
+                "sendNotificationEmail"
+            ],
+            "properties": {
+                "api": "/customers",
+                "elementInstanceId": "$config.QBOElementInstance",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "sendNotificationEmail",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "gracefulFormulaExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEventTrigger"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.QBOElementInstance}"
+            },
+            "type": "event"
+        }
+    ]
+}
