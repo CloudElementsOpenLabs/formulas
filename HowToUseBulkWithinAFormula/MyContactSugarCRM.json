@@ -1,89 +1,89 @@
 {
-  "id": 14768,
-  "elementKey": "sfdc",
-  "elementId": 23,
+  "id": 14771,
+  "elementKey": "sugarcrmv2",
+  "elementId": 234,
   "objectName": "MyContact",
-  "vendorName": "Contact",
+  "vendorName": "contacts",
   "fields": [
     {
       "type": "string",
-      "id": 678180,
-      "path": "phone",
-      "level": "organization",
-      "vdrFieldId": 92107,
-      "vendorPath": "MobilePhone",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678172,
-      "path": "addressInfo.city",
-      "level": "organization",
-      "vdrFieldId": 92103,
-      "vendorPath": "MailingCity",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678174,
-      "path": "addressInfo.state",
-      "level": "organization",
-      "vdrFieldId": 92105,
-      "vendorPath": "MailingState",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678173,
-      "path": "addressInfo.country",
-      "level": "organization",
-      "vdrFieldId": 92098,
-      "vendorPath": "MailingCountry",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678176,
-      "path": "addressInfo.zip",
-      "level": "organization",
-      "vdrFieldId": 92101,
-      "vendorPath": "MailingPostalCode",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678178,
-      "path": "firstName",
-      "level": "organization",
-      "vdrFieldId": 92099,
-      "vendorPath": "FirstName",
-      "vendorType": "string"
-    },
-    {
-      "type": "string",
-      "id": 678175,
+      "id": 678202,
       "path": "addressInfo.street",
       "level": "organization",
       "vdrFieldId": 92100,
-      "vendorPath": "MailingStreet",
+      "vendorPath": "primary_address_street",
       "vendorType": "string"
     },
     {
       "type": "string",
-      "id": 678177,
-      "path": "email",
+      "id": 678199,
+      "path": "addressInfo.city",
       "level": "organization",
-      "vdrFieldId": 92106,
-      "vendorPath": "Email",
+      "vdrFieldId": 92103,
+      "vendorPath": "primary_address_city",
       "vendorType": "string"
     },
     {
       "type": "string",
-      "id": 678179,
+      "id": 678200,
+      "path": "addressInfo.country",
+      "level": "organization",
+      "vdrFieldId": 92098,
+      "vendorPath": "primary_address_country",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678206,
       "path": "lastName",
       "level": "organization",
       "vdrFieldId": 92104,
-      "vendorPath": "LastName",
+      "vendorPath": "last_name",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678205,
+      "path": "firstName",
+      "level": "organization",
+      "vdrFieldId": 92099,
+      "vendorPath": "first_name",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678204,
+      "path": "email",
+      "level": "organization",
+      "vdrFieldId": 92106,
+      "vendorPath": "email1",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678207,
+      "path": "phone",
+      "level": "organization",
+      "vdrFieldId": 92107,
+      "vendorPath": "phone_mobile",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678203,
+      "path": "addressInfo.zip",
+      "level": "organization",
+      "vdrFieldId": 92101,
+      "vendorPath": "primary_address_postalcode",
+      "vendorType": "string"
+    },
+    {
+      "type": "string",
+      "id": 678201,
+      "path": "addressInfo.state",
+      "level": "organization",
+      "vdrFieldId": 92105,
+      "vendorPath": "primary_address_state",
       "vendorType": "string"
     }
   ],
@@ -91,32 +91,32 @@
     {
       "type": "addToDocumentation",
       "level": "instance",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "addToDocumentation",
       "level": "account",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "addToDocumentation",
       "level": "organization",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "inherit",
       "level": "instance",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "inherit",
       "level": "account",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "inherit",
       "level": "organization",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "passThrough",
@@ -125,7 +125,7 @@
         "toVendor": false
       },
       "level": "instance",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "passThrough",
@@ -134,7 +134,7 @@
         "toVendor": false
       },
       "level": "account",
-      "associatedId": 748117
+      "associatedId": 927058
     },
     {
       "type": "passThrough",
@@ -143,7 +143,7 @@
         "toVendor": false
       },
       "level": "organization",
-      "associatedId": 748117
+      "associatedId": 927058
     }
   ],
   "isLegacy": false

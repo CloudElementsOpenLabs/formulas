@@ -1,47 +1,79 @@
 {
+  "id": 4195,
+  "companyId": 23367,
+  "accountId": 48093,
+  "userId": 62973,
+  "createdDate": "2020-10-13 17:48:40.92253",
   "objectName": "MyContact",
-  "fields": [{
+  "fields": [
+    {
       "type": "string",
-      "path": "addressInfo.country",
+      "id": 92103,
+      "path": "addressInfo.city",
+      "level": "organization",
       "displayName": ""
     },
     {
       "type": "string",
-      "path": "firstName"
+      "id": 92098,
+      "path": "addressInfo.country",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "addressInfo.street"
+      "id": 92105,
+      "path": "addressInfo.state",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "addressInfo.zip"
+      "id": 92100,
+      "path": "addressInfo.street",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "id"
+      "id": 92101,
+      "path": "addressInfo.zip",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "addressInfo.city"
+      "id": 92106,
+      "path": "email",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "lastName"
+      "id": 92099,
+      "path": "firstName",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "addressInfo.state"
+      "id": 92104,
+      "path": "lastName",
+      "level": "organization",
+      "displayName": ""
     },
     {
       "type": "string",
-      "path": "email"
-    },
-    {
-      "type": "string",
+      "id": 92107,
       "path": "phone",
+      "level": "organization",
       "displayName": ""
     }
   ],
-  "level": "organization"
+  "mappedElementIds": [
+    23,
+    234
+  ],
+  "vdrShareLevel": "organization",
+  "vdrShared": true
 }

@@ -1,0 +1,49 @@
+[
+  {
+    "id": 41838,
+    "name": "BulkStep3",
+    "debugLoggingExpires": "2020-11-13T20:44:52Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-11-10T11:46:54Z",
+    "steps": [
+      {
+        "id": 445230,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "checkForErrors",
+        "type": "script",
+        "properties": {
+          "body": "if (trigger.args.hasOwnProperty('error')){\n  done(false);\n} else {\n  done(true);\n}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37947,
+        "onSuccess": [
+          "checkForErrors"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "singleThreaded": false,
+    "debugLoggingEnabled": true,
+    "configuration": [
+      {
+        "id": 82414,
+        "key": "email",
+        "name": "email",
+        "type": "value",
+        "description": "Enter an email to be notified in case of Bulk Upload failure.",
+        "required": true
+      }
+    ]
+  }
+]

@@ -1,14 +1,14 @@
 [
   {
-    "id": 40944,
+    "id": 41019,
     "name": "BulkStep2DocsHub",
-    "debugLoggingExpires": "2020-10-09T00:15:54Z",
+    "debugLoggingExpires": "2020-11-10T19:46:23Z",
     "userId": 62973,
     "accountId": 48093,
-    "createdDate": "2020-10-08T16:15:54Z",
+    "createdDate": "2020-10-12T13:41:06Z",
     "steps": [
       {
-        "id": 434590,
+        "id": 435360,
         "onSuccess": [
           "streamBulkResults"
         ],
@@ -20,7 +20,7 @@
         }
       },
       {
-        "id": 434591,
+        "id": 435361,
         "onSuccess": [
           "generateMetadata"
         ],
@@ -32,28 +32,28 @@
         }
       },
       {
-        "id": 434592,
+        "id": 435362,
         "onSuccess": [],
         "onFailure": [],
         "name": "streamBulkResults",
         "type": "elementRequestStream",
         "properties": {
-          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
-          "uploadFormDataName": "",
-          "uploadQuery": "${steps.generateMetadata.path}",
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
           "downloadMethod": "GET",
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
           "uploadApi": "/files",
           "uploadMethod": "POST",
-          "uploadElementInstanceId": "${config.target}",
+          "uploadFormDataName": "",
           "downloadElementInstanceId": "${config.crmSource}",
-          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
-          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}"
+          "uploadElementInstanceId": "${config.target}",
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "uploadQuery": "${steps.generateMetadata.path}"
         }
       }
     ],
     "triggers": [
       {
-        "id": 37032,
+        "id": 37107,
         "onSuccess": [
           "isSuccess"
         ],
@@ -66,25 +66,25 @@
     ],
     "engine": "v3",
     "active": true,
-    "debugLoggingEnabled": true,
     "singleThreaded": false,
+    "debugLoggingEnabled": false,
     "configuration": [
       {
-        "id": 80865,
+        "id": 80996,
         "key": "crmSource",
         "name": "crmSource",
         "type": "elementInstance",
         "required": true
       },
       {
-        "id": 80866,
+        "id": 80997,
         "key": "object",
         "name": "object",
         "type": "value",
         "required": true
       },
       {
-        "id": 80867,
+        "id": 80998,
         "key": "target",
         "name": "target",
         "type": "elementInstance",
