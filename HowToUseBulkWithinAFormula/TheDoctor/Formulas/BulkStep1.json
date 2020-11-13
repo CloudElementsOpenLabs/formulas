@@ -15,12 +15,12 @@
         "name": "createBulkJob",
         "type": "elementRequest",
         "properties": {
-          "method": "POST",
           "headers": "${steps.createQuery.headers}",
+          "api": "/bulk/query",
           "elementInstanceId": "${config.crm.source}",
+          "method": "POST",
           "query": "",
-          "body": "${steps.createQuery.body}",
-          "api": "/bulk/query"
+          "body": "${steps.createQuery.body}"
         }
       },
       {

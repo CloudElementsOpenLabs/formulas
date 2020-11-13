@@ -1,1 +1,107 @@
-[]
+[
+  {
+    "id": 41887,
+    "name": "BulkStep2",
+    "description": "Receives the data stream from Step 1 and sends to Act-On",
+    "debugLoggingExpires": "2020-11-13T23:52:04Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-11-13T15:52:04Z",
+    "steps": [
+      {
+        "id": 445679,
+        "onSuccess": [
+          "streamBulkResults"
+        ],
+        "onFailure": [],
+        "name": "generateMetadata",
+        "type": "script",
+        "properties": {
+          "body": "\nconst downloadHeaders = {\n  \"Accept\":\"application/json\"\n};\n\nconst uploadHeaders = {\n  \"Elements-Async-Callback-Url\": `/formulas/instances/${config.thirdFormulaInstanceId}/executions`\n};\n\ndone({  downloadHeaders, uploadHeaders  });\n "
+        }
+      },
+      {
+        "id": 445680,
+        "onSuccess": [
+          "generateMetadata"
+        ],
+        "onFailure": [],
+        "name": "isSuccess",
+        "type": "filter",
+        "properties": {
+          "body": "let status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 445681,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "streamBulkResults",
+        "type": "elementRequestStream",
+        "properties": {
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
+          "uploadMethod": "POST",
+          "uploadFormData": "",
+          "downloadMethod": "GET",
+          "downloadElementInstanceId": "${config.crm.source}",
+          "uploadFormDataName": "",
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "uploadApi": "/bulk/${config.object}",
+          "uploadElementInstanceId": "${config.target}",
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37998,
+        "onSuccess": [
+          "isSuccess"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "singleThreaded": false,
+    "debugLoggingEnabled": true,
+    "configuration": [
+      {
+        "id": 82533,
+        "key": "crm.source",
+        "name": "CRM Source",
+        "type": "elementInstance",
+        "description": "The CRM source instance",
+        "required": true
+      },
+      {
+        "id": 82534,
+        "key": "object",
+        "name": "object",
+        "type": "value",
+        "description": "Object to transfer (contacts, accounts, CustomContact, etc.)",
+        "required": true
+      },
+      {
+        "id": 82535,
+        "key": "target",
+        "name": "target",
+        "type": "elementInstance",
+        "description": "Act-On Target Instance",
+        "required": true
+      },
+      {
+        "id": 82536,
+        "key": "thirdFormulaInstanceId",
+        "name": "thirdFormulaInstanceId",
+        "type": "value",
+        "description": "The Id of the Formula Instance for checking for errors.",
+        "required": true
+      }
+    ]
+  }
+]
