@@ -1,5 +1,5 @@
 {
-    "createdDate": "2020-10-09 13:34:19.506495",
+    "createdDate": "2020-10-13 17:48:40.92253",
     "fields": [
         {
             "displayName": "",
@@ -46,12 +46,6 @@
         {
             "displayName": "",
             "level": "organization",
-            "path": "id",
-            "type": "string"
-        },
-        {
-            "displayName": "",
-            "level": "organization",
             "path": "lastName",
             "type": "string"
         },
@@ -63,6 +57,6 @@
         }
     ],
     "objectName": "MyContact",
-    "vdrShared": false,
-    "vdrShareLevel": "account"
+    "vdrShared": true,
+    "vdrShareLevel": "organization"
 }

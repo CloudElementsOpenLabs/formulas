@@ -17,89 +17,73 @@
             "type": "passThrough"
         }
     ],
-    "elementKey": "dynamicscrmadfs",
+    "elementKey": "sugarcrmv2",
     "fields": [
-        {
-            "level": "organization",
-            "path": "firstName",
-            "type": "string",
-            "vendorPath": "attributes.firstname",
-            "vendorType": "string"
-        },
-        {
-            "level": "organization",
-            "path": "addressInfo.state",
-            "type": "string",
-            "vendorPath": "attributes.address1_stateorprovince",
-            "vendorType": "string"
-        },
         {
             "level": "organization",
             "path": "addressInfo.street",
             "type": "string",
-            "vendorPath": "attributes.address1_line1",
-            "vendorType": "string"
-        },
-        {
-            "level": "organization",
-            "path": "addressInfo.zip",
-            "type": "string",
-            "vendorPath": "attributes.address1_postalcode",
+            "vendorPath": "primary_address_street",
             "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.city",
             "type": "string",
-            "vendorPath": "attributes.address1_city",
-            "vendorType": "string"
-        },
-        {
-            "level": "organization",
-            "path": "lastName",
-            "type": "string",
-            "vendorPath": "attributes.lastname",
-            "vendorType": "string"
-        },
-        {
-            "level": "organization",
-            "path": "email",
-            "type": "string",
-            "vendorPath": "attributes.emailaddress1",
-            "vendorType": "string"
-        },
-        {
-            "level": "organization",
-            "path": "phone",
-            "type": "string",
-            "vendorPath": "attributes.mobilephone",
+            "vendorPath": "primary_address_city",
             "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.country",
             "type": "string",
-            "vendorPath": "attributes.address1_country",
+            "vendorPath": "primary_address_country",
             "vendorType": "string"
         },
         {
-            "configuration": [
-                {
-                    "properties": {
-                        "fromVendor": true,
-                        "toVendor": false
-                    },
-                    "type": "passThrough"
-                }
-            ],
             "level": "organization",
-            "path": "id",
+            "path": "lastName",
             "type": "string",
-            "vendorPath": "attributes.contactid",
+            "vendorPath": "last_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "firstName",
+            "type": "string",
+            "vendorPath": "first_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "email",
+            "type": "string",
+            "vendorPath": "email1",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "phone",
+            "type": "string",
+            "vendorPath": "phone_mobile",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.zip",
+            "type": "string",
+            "vendorPath": "primary_address_postalcode",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.state",
+            "type": "string",
+            "vendorPath": "primary_address_state",
             "vendorType": "string"
         }
     ],
     "isLegacy": false,
     "objectName": "MyContact",
-    "vendorName": "contact"
+    "vendorName": "contacts"
 }

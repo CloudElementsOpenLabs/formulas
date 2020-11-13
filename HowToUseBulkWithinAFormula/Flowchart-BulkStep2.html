@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bulk Step 2</title>
+    <title>BulkStep2</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -18,8 +18,8 @@
         .node circle,
         .node ellipse,
         .node polygon {
-                    fill: #cde498;
-                    stroke: #333;
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
                     stroke-width: 2px;
                 }
         .mermaid .label {
@@ -44,43 +44,56 @@
         td {
                     width: 180px;
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
                 }
         h2 {
                     text-align: center;
-                    color: red;
                     border: 1px solid black;
                     border-radius: 5px;
                     padding: 1em;
                 }
         .container {
                     text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
                 }
     </style>
 </head>
 <body>
     <h2>
-        Bulk Step 2
+        BulkStep2
     </h2>
     <div class="container">
         <div class="mermaid">
             graph TD
-            step-000((Trigger))
+
+                      step-000((Trigger))
             step-001{isSuccess}
             step-002((END))
             step-003(generateMetadata)
             step-004[streamBulkResults]
             step-005((END))
-            step-000== continue ==>step-001
+
+                      step-000== continue ==>step-001
             step-001-- success -->step-003
             step-001-. failure .->step-002
             step-003-- success -->step-004
             step-004-. done .->step-005
-            style step-002 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                      style step-002 stroke-width:3px,stroke-dasharray: 5, 5;
             style step-005 stroke-width:3px,stroke-dasharray: 5, 5;
-            click step-000 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT5UcmlnZ2VyIEVsZW1lbnQ6PGJyPjxicj48cHJlPiAgYXN5bmMgOiBUcnVlPGJyPiAgIHR5cGUgOiBtYW51YWw8L3ByZT48YnI+UkFXIEpTT046PGJyPjxicj48cHJlPns8YnI+ICAnbmFtZSc6ICd0cmlnZ2VyJywgPGJyPiAgJ29uRmFpbHVyZSc6IFtdLCA8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2lzU3VjY2Vzcyc8YnI+ICBdLCA8YnI+ICAncHJvcGVydGllcyc6IHt9LCA8YnI+ICAnYXN5bmMnOiB0cnVlLCA8YnI+ICAndHlwZSc6ICdtYW51YWwnLCA8YnI+ICAnaWQnOiA0Njk4PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg==" "Trigger Element:<br><pre>  async : True<br>   type : manual</pre>"
-            click step-001 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPmlzU3VjY2VzczwvdGl0bGU+PC9oZWFkPjxib2R5PkphdmFTY3JpcHQ6PGJyPjxicj48cHJlPmxldCBzdGF0dXMgPSB0cmlnZ2VyLmFyZ3Muc3RhdHVzOzxicj48YnI+aWYgKHN0YXR1cyAmJiBzdGF0dXMgPT09ICdDT01QTEVURUQnKSB7PGJyPiAgZG9uZSh0cnVlKTs8YnI+fSBlbHNlIHs8YnI+ICBkb25lKGZhbHNlKTs8YnI+fTwvcHJlPjxicj5SQVcgSlNPTjo8YnI+PGJyPjxwcmU+ezxicj4gICduYW1lJzogJ2lzU3VjY2VzcycsIDxicj4gICdvbkZhaWx1cmUnOiBbXSwgPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZW5lcmF0ZU1ldGFkYXRhJzxicj4gIF0sIDxicj4gICdpZCc6IDUzNTY2LCA8YnI+ICAndHlwZSc6ICdmaWx0ZXInLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2xldCBzdGF0dXMgPSB0cmlnZ2VyLmFyZ3Muc3RhdHVzO1xuXG5pZiAoc3RhdHVzICYmIHN0YXR1cyA9PT0gXCdDT01QTEVURURcJykge1xuICBkb25lKHRydWUpO1xufSBlbHNlIHtcbiAgZG9uZShmYWxzZSk7XG59Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+" "JavaScript:<br><pre>let status = trigger.args.status;<br><br>if (status && status === 'COMPLETED') {<br>  done(true);<br>} else {<br>  done(false);<br>}</pre>"
-            click step-003 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPmdlbmVyYXRlTWV0YWRhdGE8L3RpdGxlPjwvaGVhZD48Ym9keT5KYXZhU2NyaXB0Ojxicj48YnI+PHByZT48YnI+bGV0IGRvd25sb2FkSGVhZGVycyA9IHs8YnI+ICAnQWNjZXB0JzondGV4dC9jc3YnPGJyPn07PGJyPjxicj5kb25lKHs8YnI+ICAnZG93bmxvYWRIZWFkZXJzJzogZG93bmxvYWRIZWFkZXJzPGJyPn0pOzxicj4gPC9wcmU+PGJyPlJBVyBKU09OOjxicj48YnI+PHByZT57PGJyPiAgJ25hbWUnOiAnZ2VuZXJhdGVNZXRhZGF0YScsIDxicj4gICdvbkZhaWx1cmUnOiBbXSwgPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdzdHJlYW1CdWxrUmVzdWx0cyc8YnI+ICBdLCA8YnI+ICAnaWQnOiA1MzU2NSwgPGJyPiAgJ3R5cGUnOiAnc2NyaXB0JywgPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdcbmxldCBkb3dubG9hZEhlYWRlcnMgPSB7XG4gIFwnQWNjZXB0XCc6XCd0ZXh0L2NzdlwnXG59O1xuXG5kb25lKHtcbiAgXCdkb3dubG9hZEhlYWRlcnNcJzogZG93bmxvYWRIZWFkZXJzXG59KTtcbiAnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4=" "JavaScript:<br><pre><br>let downloadHeaders = {<br>  'Accept':'text/csv'<br>};<br><br>done({<br>  'downloadHeaders': downloadHeaders<br>});<br> </pre>"
-            click step-004 "data:text/html;charset=utf-8;base64,PGh0bWw+PGhlYWQ+PHRpdGxlPnN0cmVhbUJ1bGtSZXN1bHRzPC90aXRsZT48L2hlYWQ+PGJvZHk+T3RoZXIgKGVsZW1lbnRSZXF1ZXN0U3RyZWFtKTo8YnI+PGJyPjxwcmU+ICAgICAgICAgICAgICAgIGRvd25sb2FkQXBpIDogL2J1bGsvJHt0cmlnZ2VyLmFyZ3MuaWR9LyR7Y29uZmlnLm9iamVjdH08YnI+ICBkb3dubG9hZEVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuY3JtLnNvdXJjZX08YnI+ICAgICAgICAgICAgZG93bmxvYWRIZWFkZXJzIDogJHtzdGVwcy5nZW5lcmF0ZU1ldGFkYXRhLmRvd25sb2FkSGVhZGVyc308YnI+ICAgICAgICAgICAgIGRvd25sb2FkTWV0aG9kIDogR0VUPGJyPiAgICAgICAgICAgICAgICAgIHVwbG9hZEFwaSA6IC9idWxrLyR7Y29uZmlnLm9iamVjdH08YnI+ICAgIHVwbG9hZEVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcudGFyZ2V0fTxicj4gICAgICAgICAgICAgdXBsb2FkRm9ybURhdGEgOiA8YnI+ICAgICAgICAgdXBsb2FkRm9ybURhdGFOYW1lIDogPGJyPiAgICAgICAgICAgICAgIHVwbG9hZE1ldGhvZCA6IFBPU1Q8L3ByZT48YnI+UkFXIEpTT046PGJyPjxicj48cHJlPns8YnI+ICAnbmFtZSc6ICdzdHJlYW1CdWxrUmVzdWx0cycsIDxicj4gICdvbkZhaWx1cmUnOiBbXSwgPGJyPiAgJ29uU3VjY2Vzcyc6IFtdLCA8YnI+ICAnaWQnOiA1MzU2NywgPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3RTdHJlYW0nLCA8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICd1cGxvYWRNZXRob2QnOiAnUE9TVCcsIDxicj4gICAgJ2Rvd25sb2FkRWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuY3JtLnNvdXJjZX0nLCA8YnI+ICAgICdkb3dubG9hZE1ldGhvZCc6ICdHRVQnLCA8YnI+ICAgICdkb3dubG9hZEhlYWRlcnMnOiAnJHtzdGVwcy5nZW5lcmF0ZU1ldGFkYXRhLmRvd25sb2FkSGVhZGVyc30nLCA8YnI+ICAgICdkb3dubG9hZEFwaSc6ICcvYnVsay8ke3RyaWdnZXIuYXJncy5pZH0vJHtjb25maWcub2JqZWN0fScsIDxicj4gICAgJ3VwbG9hZEFwaSc6ICcvYnVsay8ke2NvbmZpZy5vYmplY3R9JywgPGJyPiAgICAndXBsb2FkRWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcudGFyZ2V0fScsIDxicj4gICAgJ3VwbG9hZEZvcm1EYXRhTmFtZSc6ICcnLCA8YnI+ICAgICd1cGxvYWRGb3JtRGF0YSc6ICcnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4=" "Other (elementRequestStream):<br><pre>                downloadApi : /bulk/${trigger.args.id}/${config.object}<br>  downloadElementInstanceId : ${config.crm.source}<br>            downloadHeaders : ${steps.generateMetadata.downloadHeaders}<br>             downloadMethod : GET<br>                  uploadApi : /bulk/${config.object}<br>    uploadElementInstanceId : ${config.target}<br>             uploadFormData : <br>         uploadFormDataName : <br>               uploadMethod : POST</pre>"
+
+                      click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gICB0eXBlIDogbWFudWFsPGJyPiAgYXN5bmMgOiB0cnVlPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDM3MTA2LDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnaXNTdWNjZXNzJzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICd0eXBlJzogJ21hbnVhbCcsPGJyPiAgJ2FzeW5jJzogdHJ1ZSw8YnI+ICAnbmFtZSc6ICd0cmlnZ2VyJyw8YnI+ICAncHJvcGVydGllcyc6IHt9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Trigger Element:<br><pre>   type : manual<br>  async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmlzU3VjY2VzczwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5sZXQgc3RhdHVzID0gdHJpZ2dlci5hcmdzLnN0YXR1czs8YnI+PGJyPmlmIChzdGF0dXMgJiYgc3RhdHVzID09PSAnQ09NUExFVEVEJykgezxicj4gIGRvbmUodHJ1ZSk7PGJyPn0gZWxzZSB7PGJyPiAgZG9uZShmYWxzZSk7PGJyPn08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDM1MzU4LDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnZ2VuZXJhdGVNZXRhZGF0YSc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdpc1N1Y2Nlc3MnLDxicj4gICd0eXBlJzogJ2ZpbHRlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdsZXQgc3RhdHVzID0gdHJpZ2dlci5hcmdzLnN0YXR1cztcblxuaWYgKHN0YXR1cyAmJiBzdGF0dXMgPT09IFwnQ09NUExFVEVEXCcpIHtcbiAgZG9uZSh0cnVlKTtcbn0gZWxzZSB7XG4gIGRvbmUoZmFsc2UpO1xufSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>let status = trigger.args.status;<br><br>if (status && status === 'COMPLETED') {<br>  done(true);<br>} else {<br>  done(false);<br>}</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdlbmVyYXRlTWV0YWRhdGE8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+PGJyPmNvbnN0IGRvd25sb2FkSGVhZGVycyA9IHs8YnI+ICAnQWNjZXB0JzonYXBwbGljYXRpb24vanNvbic8YnI+fTs8YnI+PGJyPmNvbnN0IHVwbG9hZEhlYWRlcnMgPSB7PGJyPiAgJ0VsZW1lbnRzLUFzeW5jLUNhbGxiYWNrLVVybCc6IGAvZm9ybXVsYXMvaW5zdGFuY2VzLyR7Y29uZmlnLnRoaXJkRm9ybXVsYUluc3RhbmNlSWR9L2V4ZWN1dGlvbnNgPGJyPn07PGJyPjxicj5kb25lKHsgIGRvd25sb2FkSGVhZGVycywgdXBsb2FkSGVhZGVycyAgfSk7PGJyPiA8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDM1MzU3LDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnc3RyZWFtQnVsa1Jlc3VsdHMnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZ2VuZXJhdGVNZXRhZGF0YScsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ1xuY29uc3QgZG93bmxvYWRIZWFkZXJzID0ge1xuICBcJ0FjY2VwdFwnOlwnYXBwbGljYXRpb24vanNvblwnXG59O1xuXG5jb25zdCB1cGxvYWRIZWFkZXJzID0ge1xuICBcJ0VsZW1lbnRzLUFzeW5jLUNhbGxiYWNrLVVybFwnOiBgL2Zvcm11bGFzL2luc3RhbmNlcy8ke2NvbmZpZy50aGlyZEZvcm11bGFJbnN0YW5jZUlkfS9leGVjdXRpb25zYFxufTtcblxuZG9uZSh7ICBkb3dubG9hZEhlYWRlcnMsIHVwbG9hZEhlYWRlcnMgIH0pO1xuICc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre><br>const downloadHeaders = {<br>  'Accept':'application/json'<br>};<br><br>const uploadHeaders = {<br>  'Elements-Async-Callback-Url': `/formulas/instances/${config.thirdFormulaInstanceId}/executions`<br>};<br><br>done({  downloadHeaders, uploadHeaders  });<br> </pre>"
+            click step-004 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnN0cmVhbUJ1bGtSZXN1bHRzPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+T3RoZXIgKGVsZW1lbnRSZXF1ZXN0U3RyZWFtKTo8L2I+PGJyPjxicj48cHJlPiAgICAgICAgICAgICBkb3dubG9hZE1ldGhvZCA6IEdFVDxicj4gICAgICAgICAgICAgICAgZG93bmxvYWRBcGkgOiAvYnVsay8ke3RyaWdnZXIuYXJncy5pZH0vJHtjb25maWcub2JqZWN0fTxicj4gICAgICAgICAgICAgdXBsb2FkRm9ybURhdGEgOiA8YnI+ICAgIHVwbG9hZEVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcudGFyZ2V0fTxicj4gICAgICAgICAgICBkb3dubG9hZEhlYWRlcnMgOiAke3N0ZXBzLmdlbmVyYXRlTWV0YWRhdGEuZG93bmxvYWRIZWFkZXJzfTxicj4gIGRvd25sb2FkRWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5jcm0uc291cmNlfTxicj4gICAgICAgICAgICAgIHVwbG9hZEhlYWRlcnMgOiAke3N0ZXBzLmdlbmVyYXRlTWV0YWRhdGEudXBsb2FkSGVhZGVyc308YnI+ICAgICAgICAgICAgICAgdXBsb2FkTWV0aG9kIDogUE9TVDxicj4gICAgICAgICAgICAgICAgICB1cGxvYWRBcGkgOiAvYnVsay8ke2NvbmZpZy5vYmplY3R9PGJyPiAgICAgICAgIHVwbG9hZEZvcm1EYXRhTmFtZSA6IDwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0MzUzNTksPGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdzdHJlYW1CdWxrUmVzdWx0cycsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3RTdHJlYW0nLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2Rvd25sb2FkTWV0aG9kJzogJ0dFVCcsPGJyPiAgICAnZG93bmxvYWRBcGknOiAnL2J1bGsvJHt0cmlnZ2VyLmFyZ3MuaWR9LyR7Y29uZmlnLm9iamVjdH0nLDxicj4gICAgJ3VwbG9hZEZvcm1EYXRhJzogJycsPGJyPiAgICAndXBsb2FkRWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcudGFyZ2V0fScsPGJyPiAgICAnZG93bmxvYWRIZWFkZXJzJzogJyR7c3RlcHMuZ2VuZXJhdGVNZXRhZGF0YS5kb3dubG9hZEhlYWRlcnN9Jyw8YnI+ICAgICdkb3dubG9hZEVsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLmNybS5zb3VyY2V9Jyw8YnI+ICAgICd1cGxvYWRIZWFkZXJzJzogJyR7c3RlcHMuZ2VuZXJhdGVNZXRhZGF0YS51cGxvYWRIZWFkZXJzfScsPGJyPiAgICAndXBsb2FkTWV0aG9kJzogJ1BPU1QnLDxicj4gICAgJ3VwbG9hZEFwaSc6ICcvYnVsay8ke2NvbmZpZy5vYmplY3R9Jyw8YnI+ICAgICd1cGxvYWRGb3JtRGF0YU5hbWUnOiAnJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Other (elementRequestStream):<br><pre>             downloadMethod : GET<br>                downloadApi : /bulk/${trigger.args.id}/${config.object}<br>             uploadFormData : <br>    uploadElementInstanceId : ${config.target}<br>            downloadHeaders : ${steps.generateMetadata.downloadHeaders}<br>  downloadElementInstanceId : ${config.crm.source}<br>              uploadHeaders : ${steps.generateMetadata.uploadHeaders}<br>               uploadMethod : POST<br>                  uploadApi : /bulk/${config.object}<br>         uploadFormDataName : </pre>"
 
         </div>
     </div>
@@ -88,7 +101,9 @@
         Formula Configuration
     </h2>
     <div class="container">
-        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>Bulk Step 2</td></tr><tr><td>Single Threaded?</td><td>False</td></tr><tr><td>Active?</td><td>True</td></tr><tr><td>Number of Steps</td><td>3</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table><br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>crm.source</td><td>CRM Source</td><td>True</td></tr><tr><td>target</td><td>target</td><td>True</td></tr></table><br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>object</td><td>object</td><td>True</td></tr></table><br/>
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>BulkStep2</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>3</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>crm.source</td><td>CRM Source</td><td>true</td></tr><tr><td>target</td><td>target</td><td>true</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>object</td><td>object</td><td>true</td></tr><tr><td>thirdFormulaInstanceId</td><td>thirdFormulaInstanceId</td><td>true</td></tr></table><br/>
     </div>
     <div class="key">
         <h2>
@@ -126,27 +141,27 @@
                     <div class="mermaid">
                         graph TD
                         A>GET]
-                        style A fill:#0f6ab4;
+                        style A stroke:#0f6ab4;
                     </div>
                     <div class="mermaid">
                         graph TD
                         B>POST]
-                        style B fill:#10a54a;
+                        style B stroke:#10a54a;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PATCH]
-                        style C fill:#D38042;
+                        style C stroke:#D38042;
                     </div>
                     <div class="mermaid">
                         graph TD
                         C>PUT]
-                        style C fill:#C5862B;
+                        style C stroke:#C5862B;
                     </div>
                     <div class="mermaid">
                         graph TD
                         D>DELETE]
-                        style D fill:#a41e22,fill-opacity:0.8;
+                        style D stroke:#a41e22;
                     </div>
                 </td>
             </tr>
@@ -206,7 +221,7 @@
         </table>
     </div>
     <div>
-        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
     </div>
 </body>
 </html>
