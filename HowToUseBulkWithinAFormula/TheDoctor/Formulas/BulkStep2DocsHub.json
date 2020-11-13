@@ -39,15 +39,15 @@
         "type": "elementRequestStream",
         "properties": {
           "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
-          "downloadMethod": "GET",
-          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
-          "uploadApi": "/files",
           "uploadMethod": "POST",
-          "uploadFormDataName": "",
           "downloadElementInstanceId": "${config.crmSource}",
-          "uploadElementInstanceId": "${config.target}",
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
+          "uploadQuery": "${steps.generateMetadata.path}",
+          "downloadMethod": "GET",
+          "uploadApi": "/files",
+          "uploadFormDataName": "",
           "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
-          "uploadQuery": "${steps.generateMetadata.path}"
+          "uploadElementInstanceId": "${config.target}"
         }
       }
     ],
@@ -66,8 +66,8 @@
     ],
     "engine": "v3",
     "active": true,
-    "singleThreaded": false,
     "debugLoggingEnabled": false,
+    "singleThreaded": false,
     "configuration": [
       {
         "id": 80996,
