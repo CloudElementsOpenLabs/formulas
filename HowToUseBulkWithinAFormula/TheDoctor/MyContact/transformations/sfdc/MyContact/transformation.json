@@ -23,61 +23,64 @@
             "level": "organization",
             "path": "phone",
             "type": "string",
-            "vendorPath": "MobilePhone"
-        },
-        {
-            "level": "organization",
-            "path": "firstName",
-            "type": "string",
-            "vendorPath": "FirstName"
+            "vendorPath": "MobilePhone",
+            "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.city",
             "type": "string",
-            "vendorPath": "MailingCity"
-        },
-        {
-            "level": "organization",
-            "path": "lastName",
-            "type": "string",
-            "vendorPath": "LastName"
+            "vendorPath": "MailingCity",
+            "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.state",
             "type": "string",
-            "vendorPath": "MailingState"
+            "vendorPath": "MailingState",
+            "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.country",
             "type": "string",
-            "vendorPath": "MailingCountry"
-        },
-        {
-            "level": "organization",
-            "path": "addressInfo.street",
-            "type": "string",
-            "vendorPath": "MailingStreet"
+            "vendorPath": "MailingCountry",
+            "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "addressInfo.zip",
             "type": "string",
-            "vendorPath": "MailingPostalCode"
+            "vendorPath": "MailingPostalCode",
+            "vendorType": "string"
         },
         {
             "level": "organization",
-            "path": "id",
+            "path": "firstName",
             "type": "string",
-            "vendorPath": "Id"
+            "vendorPath": "FirstName",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "addressInfo.street",
+            "type": "string",
+            "vendorPath": "MailingStreet",
+            "vendorType": "string"
         },
         {
             "level": "organization",
             "path": "email",
             "type": "string",
-            "vendorPath": "Email"
+            "vendorPath": "Email",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "lastName",
+            "type": "string",
+            "vendorPath": "LastName",
+            "vendorType": "string"
         }
     ],
     "isLegacy": false,

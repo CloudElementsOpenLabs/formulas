@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BulkStep1</title>
+    <title>BulkStep3</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -68,27 +68,23 @@
 </head>
 <body>
     <h2>
-        BulkStep1
+        BulkStep3
     </h2>
     <div class="container">
         <div class="mermaid">
             graph TD
 
                       step-000((Trigger))
-            step-001(createQuery)
-            step-002>createBulkJob]
-            step-003((END))
+            step-001(checkForErrors)
+            step-002((END))
 
                       step-000== continue ==>step-001
-            step-001-- success -->step-002
-            step-002-. done .->step-003
+            step-001-. done .->step-002
 
-                      style step-002 stroke:#10a54a;
-            style step-003 stroke-width:3px,stroke-dasharray: 5, 5;
+                      style step-002 stroke-width:3px,stroke-dasharray: 5, 5;
 
-                      click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gICBjcm9uIDogJHtjb25maWcuY3Jvbn08YnI+ICAgdHlwZSA6IHNjaGVkdWxlZDxicj4gIGFzeW5jIDogdHJ1ZTwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiAzNzEwNSw8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2NyZWF0ZVF1ZXJ5Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICd0eXBlJzogJ3NjaGVkdWxlZCcsPGJyPiAgJ2FzeW5jJzogdHJ1ZSw8YnI+ICAnbmFtZSc6ICd0cmlnZ2VyJyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdjcm9uJzogJyR7Y29uZmlnLmNyb259Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Trigger Element:<br><pre>   cron : ${config.cron}<br>   type : scheduled<br>  async : true</pre>"
-            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNyZWF0ZVF1ZXJ5PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoezxicj4gICdib2R5Jzp7PGJyPiAgICAncXVlcnknOiBgc2VsZWN0ICogZnJvbSAke2NvbmZpZy5vYmplY3R9IGxpbWl0IDEwMGAsPGJyPiAgICAnaGVhZGVyRGF0YSc6IHs8YnI+ICAgICAgJ29yZGVyJzogJ2FzYyc8YnI+ICAgIH08YnI+ICB9LDxicj4gICdoZWFkZXJzJzp7PGJyPiAgICAnRWxlbWVudHMtQXN5bmMtQ2FsbGJhY2stVXJsJzogYC9mb3JtdWxhcy9pbnN0YW5jZXMvJHtjb25maWcuc2Vjb25kZm9ybXVsYWluc3RhbmNlaWR9L2V4ZWN1dGlvbnNgLDxicj4gIH0sPGJyPn0pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnaWQnOiA0MzUzNTYsPGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjcmVhdGVCdWxrSm9iJzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2NyZWF0ZVF1ZXJ5Jyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnZG9uZSh7XG4gIFwnYm9keVwnOntcbiAgICBcJ3F1ZXJ5XCc6IGBzZWxlY3QgKiBmcm9tICR7Y29uZmlnLm9iamVjdH0gbGltaXQgMTAwYCxcbiAgICBcJ2hlYWRlckRhdGFcJzoge1xuICAgICAgXCdvcmRlclwnOiBcJ2FzY1wnXG4gICAgfVxuICB9LFxuICBcJ2hlYWRlcnNcJzp7XG4gICAgXCdFbGVtZW50cy1Bc3luYy1DYWxsYmFjay1VcmxcJzogYC9mb3JtdWxhcy9pbnN0YW5jZXMvJHtjb25maWcuc2Vjb25kZm9ybXVsYWluc3RhbmNlaWR9L2V4ZWN1dGlvbnNgLFxuICB9LFxufSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done({<br>  'body':{<br>    'query': `select * from ${config.object} limit 100`,<br>    'headerData': {<br>      'order': 'asc'<br>    }<br>  },<br>  'headers':{<br>    'Elements-Async-Callback-Url': `/formulas/instances/${config.secondformulainstanceid}/executions`,<br>  },<br>});</pre>"
-            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNyZWF0ZUJ1bGtKb2I8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5SZXF1ZXN0OjwvYj48YnI+PGJyPjxwcmU+ICBlbGVtZW50SW5zdGFuY2VJZCA6ICR7Y29uZmlnLmNybS5zb3VyY2V9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQT1NUPGJyPiAgICAgICAgICAgIGhlYWRlcnMgOiAke3N0ZXBzLmNyZWF0ZVF1ZXJ5LmhlYWRlcnN9PGJyPiAgICAgICAgICAgICAgcXVlcnkgOiA8YnI+ICAgICAgICAgICAgICAgYm9keSA6ICR7c3RlcHMuY3JlYXRlUXVlcnkuYm9keX08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC9idWxrL3F1ZXJ5PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDQzNTM1NSw8YnI+ICAnb25TdWNjZXNzJzogW10sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2NyZWF0ZUJ1bGtKb2InLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5jcm0uc291cmNlfScsPGJyPiAgICAnbWV0aG9kJzogJ1BPU1QnLDxicj4gICAgJ2hlYWRlcnMnOiAnJHtzdGVwcy5jcmVhdGVRdWVyeS5oZWFkZXJzfScsPGJyPiAgICAncXVlcnknOiAnJyw8YnI+ICAgICdib2R5JzogJyR7c3RlcHMuY3JlYXRlUXVlcnkuYm9keX0nLDxicj4gICAgJ2FwaSc6ICcvYnVsay9xdWVyeSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.crm.source}<br>             method : POST<br>            headers : ${steps.createQuery.headers}<br>              query : <br>               body : ${steps.createQuery.body}<br>                api : /bulk/query</pre>"
+                      click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gICB0eXBlIDogbWFudWFsPGJyPiAgYXN5bmMgOiB0cnVlPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdpZCc6IDM3OTQ3LDxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnY2hlY2tGb3JFcnJvcnMnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ3R5cGUnOiAnbWFudWFsJyw8YnI+ICAnYXN5bmMnOiB0cnVlLDxicj4gICduYW1lJzogJ3RyaWdnZXInLDxicj4gICdwcm9wZXJ0aWVzJzoge308YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Trigger Element:<br><pre>   type : manual<br>  async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrRm9yRXJyb3JzPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmlmICh0cmlnZ2VyLmFyZ3MuaGFzT3duUHJvcGVydHkoJ2Vycm9yJykpezxicj4gIGNvbnN0IHRvdGFsUmVjb3JkcyA9IHRyaWdnZXIuYXJncy5yZWNvcmRzQ291bnQrdHJpZ2dlci5hcmdzLnJlY29yZHNGYWlsZWRDb3VudDs8YnI+ICBub3RpZnkuZW1haWwoY29uZmlnLmVtYWlsLCBgRXJyb3IgZm9yIEJ1bGsgVXBsb2FkIEpvYiB3aXRoIElkICR7dHJpZ2dlci5hcmdzLmlkfWAsIGBUaGUgQnVsayBVcGxvYWQgSm9iIHdpdGggSWQgJHt0cmlnZ2VyLmFyZ3MuaWR9IGZhaWxlZCB3aXRoIGVycm9yIG1lc3NhZ2U6ICR7dHJpZ2dlci5hcmdzLmVycm9yfSBhbmQgc3RhdHVzOiAke3RyaWdnZXIuYXJncy5zdGF0dXN9LiBPZiAke3RvdGFsUmVjb3Jkc30gcmVjb3JkcywgJHt0cmlnZ2VyLmFyZ3MucmVjb3Jkc0ZhaWxlZENvdW50fSBmYWlsZWQgdG8gdXBsb2FkLmApOzxicj59PGJyPjxicj5kb25lKHsgc3VjY2VzczogdHJ1ZSB9KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ2lkJzogNDQ1MjMwLDxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnY2hlY2tGb3JFcnJvcnMnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdpZiAodHJpZ2dlci5hcmdzLmhhc093blByb3BlcnR5KCdlcnJvcicpKXtcbiAgY29uc3QgdG90YWxSZWNvcmRzID0gdHJpZ2dlci5hcmdzLnJlY29yZHNDb3VudCt0cmlnZ2VyLmFyZ3MucmVjb3Jkc0ZhaWxlZENvdW50O1xuICBub3RpZnkuZW1haWwoY29uZmlnLmVtYWlsLCBgRXJyb3IgZm9yIEJ1bGsgVXBsb2FkIEpvYiB3aXRoIElkICR7dHJpZ2dlci5hcmdzLmlkfWAsIGBUaGUgQnVsayBVcGxvYWQgSm9iIHdpdGggSWQgJHt0cmlnZ2VyLmFyZ3MuaWR9IGZhaWxlZCB3aXRoIGVycm9yIG1lc3NhZ2U6ICR7dHJpZ2dlci5hcmdzLmVycm9yfSBhbmQgc3RhdHVzOiAke3RyaWdnZXIuYXJncy5zdGF0dXN9LiBPZiAke3RvdGFsUmVjb3Jkc30gcmVjb3JkcywgJHt0cmlnZ2VyLmFyZ3MucmVjb3Jkc0ZhaWxlZENvdW50fSBmYWlsZWQgdG8gdXBsb2FkLmApO1xufVxuXG5kb25lKHsgc3VjY2VzczogdHJ1ZSB9KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>if (trigger.args.hasOwnProperty('error')){<br>  const totalRecords = trigger.args.recordsCount+trigger.args.recordsFailedCount;<br>  notify.email(config.email, `Error for Bulk Upload Job with Id ${trigger.args.id}`, `The Bulk Upload Job with Id ${trigger.args.id} failed with error message: ${trigger.args.error} and status: ${trigger.args.status}. Of ${totalRecords} records, ${trigger.args.recordsFailedCount} failed to upload.`);<br>}<br><br>done({ success: true });</pre>"
 
         </div>
     </div>
@@ -96,9 +92,9 @@
         Formula Configuration
     </h2>
     <div class="container">
-        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>BulkStep1</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>2</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
-    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>crm.source</td><td>CRM Source</td><td>true</td></tr></table>
-    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>cron</td><td>cron</td><td>true</td></tr><tr><td>object</td><td>object</td><td>true</td></tr><tr><td>secondformulainstanceid</td><td>SecondFormulaInstanceId</td><td>true</td></tr></table><br/>
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>BulkStep3</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>1</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>email</td><td>email</td><td>true</td></tr></table><br/>
     </div>
     <div class="key">
         <h2>
@@ -216,7 +212,7 @@
         </table>
     </div>
     <div>
-        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br>
     </div>
 </body>
 </html>

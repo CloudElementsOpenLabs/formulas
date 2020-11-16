@@ -1,0 +1,49 @@
+[
+  {
+    "id": 41838,
+    "name": "BulkStep3",
+    "debugLoggingExpires": "2020-11-16T20:31:46Z",
+    "userId": 62973,
+    "accountId": 48093,
+    "createdDate": "2020-11-10T11:46:54Z",
+    "steps": [
+      {
+        "id": 445230,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "checkForErrors",
+        "type": "script",
+        "properties": {
+          "body": "if (trigger.args.hasOwnProperty('error')){\n  const totalRecords = trigger.args.recordsCount+trigger.args.recordsFailedCount;\n  notify.email(config.email, `Error for Bulk Upload Job with Id ${trigger.args.id}`, `The Bulk Upload Job with Id ${trigger.args.id} failed with error message: ${trigger.args.error} and status: ${trigger.args.status}. Of ${totalRecords} records, ${trigger.args.recordsFailedCount} failed to upload.`);\n}\n\ndone({ success: true });"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 37947,
+        "onSuccess": [
+          "checkForErrors"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": true,
+    "singleThreaded": false,
+    "configuration": [
+      {
+        "id": 82414,
+        "key": "email",
+        "name": "email",
+        "type": "value",
+        "description": "Enter an email to be notified in case of Bulk Upload failure.",
+        "required": true
+      }
+    ]
+  }
+]

@@ -1,15 +1,15 @@
 [
   {
-    "id": 40943,
+    "id": 41887,
     "name": "BulkStep2",
     "description": "Receives the data stream from Step 1 and sends to Act-On",
-    "debugLoggingExpires": "2020-10-09T00:15:33Z",
+    "debugLoggingExpires": "2020-11-16T20:31:40Z",
     "userId": 62973,
     "accountId": 48093,
-    "createdDate": "2020-10-08T16:15:33Z",
+    "createdDate": "2020-11-13T15:52:04Z",
     "steps": [
       {
-        "id": 434587,
+        "id": 445679,
         "onSuccess": [
           "streamBulkResults"
         ],
@@ -17,11 +17,11 @@
         "name": "generateMetadata",
         "type": "script",
         "properties": {
-          "body": "\nlet downloadHeaders = {\n  \"Accept\":\"application/json\"\n};\n\ndone({\n  \"downloadHeaders\": downloadHeaders\n});\n "
+          "body": "\nconst downloadHeaders = {\n  \"Accept\":\"application/json\"\n};\n\nconst uploadHeaders = {\n  \"Elements-Async-Callback-Url\": `/formulas/instances/${config.thirdFormulaInstanceId}/executions`\n};\n\ndone({  downloadHeaders, uploadHeaders  });\n "
         }
       },
       {
-        "id": 434588,
+        "id": 445680,
         "onSuccess": [
           "generateMetadata"
         ],
@@ -33,27 +33,40 @@
         }
       },
       {
-        "id": 434589,
+        "id": 445753,
         "onSuccess": [],
         "onFailure": [],
+        "name": "sendFailureEmail",
+        "type": "script",
+        "properties": {
+          "body": "notify.email(config.email, `Error for Bulk Job with Id ${trigger.args.id}`, `The Bulk Upload Job with Id ${trigger.args.id} failed with status code: ${steps.streamBulkResults.download.response.code}.`);\ndone({ success: true });"
+        }
+      },
+      {
+        "id": 445681,
+        "onSuccess": [],
+        "onFailure": [
+          "sendFailureEmail"
+        ],
         "name": "streamBulkResults",
         "type": "elementRequestStream",
         "properties": {
-          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
-          "uploadElementInstanceId": "${config.target}",
           "uploadFormDataName": "",
-          "downloadElementInstanceId": "${config.crm.source}",
           "downloadMethod": "GET",
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
           "uploadApi": "/bulk/${config.object}",
-          "uploadFormData": "",
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "downloadElementInstanceId": "${config.crm.source}",
+          "uploadElementInstanceId": "${config.target}",
           "uploadMethod": "POST",
-          "downloadApi": "/bulk/${trigger.args.id}/${config.object}"
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+          "uploadFormData": ""
         }
       }
     ],
     "triggers": [
       {
-        "id": 37031,
+        "id": 37998,
         "onSuccess": [
           "isSuccess"
         ],
@@ -66,11 +79,11 @@
     ],
     "engine": "v3",
     "active": true,
-    "debugLoggingEnabled": true,
     "singleThreaded": false,
+    "debugLoggingEnabled": true,
     "configuration": [
       {
-        "id": 80862,
+        "id": 82533,
         "key": "crm.source",
         "name": "CRM Source",
         "type": "elementInstance",
@@ -78,7 +91,15 @@
         "required": true
       },
       {
-        "id": 80863,
+        "id": 82556,
+        "key": "email",
+        "name": "email",
+        "type": "value",
+        "description": "Add an email to receive notification at in case of a failed. ",
+        "required": true
+      },
+      {
+        "id": 82534,
         "key": "object",
         "name": "object",
         "type": "value",
@@ -86,11 +107,19 @@
         "required": true
       },
       {
-        "id": 80864,
+        "id": 82535,
         "key": "target",
         "name": "target",
         "type": "elementInstance",
         "description": "Act-On Target Instance",
+        "required": true
+      },
+      {
+        "id": 82536,
+        "key": "thirdFormulaInstanceId",
+        "name": "thirdFormulaInstanceId",
+        "type": "value",
+        "description": "The Id of the Formula Instance for checking for errors.",
         "required": true
       }
     ]

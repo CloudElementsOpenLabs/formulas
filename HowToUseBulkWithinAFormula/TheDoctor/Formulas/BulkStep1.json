@@ -1,30 +1,30 @@
 [
   {
-    "id": 40942,
+    "id": 41017,
     "name": "BulkStep1",
     "description": "Start a bulk download from an element",
-    "debugLoggingExpires": "2020-10-09T00:15:11Z",
+    "debugLoggingExpires": "2020-11-13T20:40:07Z",
     "userId": 62973,
     "accountId": 48093,
-    "createdDate": "2020-10-08T16:15:11Z",
+    "createdDate": "2020-10-12T13:40:52Z",
     "steps": [
       {
-        "id": 434585,
+        "id": 435355,
         "onSuccess": [],
         "onFailure": [],
         "name": "createBulkJob",
         "type": "elementRequest",
         "properties": {
-          "method": "POST",
-          "body": "${steps.createQuery.body}",
-          "elementInstanceId": "${config.crm.source}",
           "headers": "${steps.createQuery.headers}",
+          "api": "/bulk/query",
+          "elementInstanceId": "${config.crm.source}",
+          "method": "POST",
           "query": "",
-          "api": "/bulk/query"
+          "body": "${steps.createQuery.body}"
         }
       },
       {
-        "id": 434586,
+        "id": 435356,
         "onSuccess": [
           "createBulkJob"
         ],
@@ -38,7 +38,7 @@
     ],
     "triggers": [
       {
-        "id": 37030,
+        "id": 37105,
         "onSuccess": [
           "createQuery"
         ],
@@ -57,7 +57,7 @@
     "singleThreaded": false,
     "configuration": [
       {
-        "id": 80858,
+        "id": 80989,
         "key": "crm.source",
         "name": "CRM Source",
         "type": "elementInstance",
@@ -65,14 +65,14 @@
         "required": true
       },
       {
-        "id": 80859,
+        "id": 80990,
         "key": "cron",
         "name": "cron",
         "type": "value",
         "required": true
       },
       {
-        "id": 80860,
+        "id": 80991,
         "key": "object",
         "name": "object",
         "type": "value",
@@ -80,7 +80,7 @@
         "required": true
       },
       {
-        "id": 80861,
+        "id": 80992,
         "key": "secondformulainstanceid",
         "name": "SecondFormulaInstanceId",
         "type": "value",

@@ -1,72 +1,93 @@
 {
-  "name": "Bulk Step 2-DocsHub",
-  "steps": [{
-    "id": 241212,
-    "onSuccess": ["streamBulkResults"],
-    "onFailure": [],
-    "name": "generateMetadata",
-    "type": "script",
-    "properties": {
-      "body": "const downloadHeaders = {\n  'Accept':'text/csv'\n};\n\nconst uploadHeaders = {\n  'Content-Type': 'multipart/form-data'\n};\n\nconst path = {\n  path: `/Test/${trigger.args.id}.${trigger.args.fileFormat}`\n};\n\ndone({ downloadHeaders, uploadHeaders, path });"
-    }
-  }, {
-    "id": 241214,
-    "onSuccess": ["generateMetadata"],
-    "onFailure": [],
-    "name": "isSuccess",
-    "type": "filter",
-    "properties": {
-      "body": "const status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
-    }
-  }, {
-    "id": 241213,
-    "onSuccess": [],
-    "onFailure": [],
-    "name": "streamBulkResults",
-    "type": "elementRequestStream",
-    "properties": {
-      "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
-      "uploadElementInstanceId": "${config.target}",
-      "uploadMethod": "POST",
-      "uploadFormDataName": "",
-      "downloadMethod": "GET",
-      "uploadQuery": "${steps.generateMetadata.path}",
-      "downloadElementInstanceId": "${config.crmSource}",
-      "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
-      "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
-      "uploadApi": "/files"
-    }
-  }],
-  "triggers": [{
-    "id": 27513,
-    "onSuccess": ["isSuccess"],
-    "onFailure": [],
-    "type": "manual",
-    "async": true,
-    "name": "trigger",
-    "properties": {}
-  }],
+  "id": 41019,
+  "name": "BulkStep2DocsHub",
+  "debugLoggingExpires": "2020-11-10T19:46:23Z",
+  "userId": 62973,
+  "accountId": 48093,
+  "createdDate": "2020-10-12T13:41:06Z",
+  "steps": [
+      {
+          "id": 435360,
+          "onSuccess": [
+              "streamBulkResults"
+          ],
+          "onFailure": [],
+          "name": "generateMetadata",
+          "type": "script",
+          "properties": {
+              "body": "const downloadHeaders = {\n  'Accept':'text/csv'\n};\n\nconst uploadHeaders = {\n  'Content-Type': 'multipart/form-data'\n};\n\nconst path = {\n  path: `/Test/${trigger.args.id}.${trigger.args.fileFormat}`\n};\n\ndone({ downloadHeaders, uploadHeaders, path });"
+          }
+      },
+      {
+          "id": 435361,
+          "onSuccess": [
+              "generateMetadata"
+          ],
+          "onFailure": [],
+          "name": "isSuccess",
+          "type": "filter",
+          "properties": {
+              "body": "const status = trigger.args.status;\n\nif (status && status === \"COMPLETED\") {\n  done(true);\n} else {\n  done(false);\n}"
+          }
+      },
+      {
+          "id": 435362,
+          "onSuccess": [],
+          "onFailure": [],
+          "name": "streamBulkResults",
+          "type": "elementRequestStream",
+          "properties": {
+              "downloadMethod": "GET",
+              "uploadFormDataName": "",
+              "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+              "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+              "uploadApi": "/files",
+              "uploadElementInstanceId": "${config.target}",
+              "uploadMethod": "POST",
+              "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
+              "uploadQuery": "${steps.generateMetadata.path}",
+              "downloadElementInstanceId": "${config.crmSource}"
+          }
+      }
+  ],
+  "triggers": [
+      {
+          "id": 37107,
+          "onSuccess": [
+              "isSuccess"
+          ],
+          "onFailure": [],
+          "type": "manual",
+          "async": true,
+          "name": "trigger",
+          "properties": {}
+      }
+  ],
   "engine": "v3",
   "active": true,
-  "debugLoggingEnabled": true,
+  "debugLoggingEnabled": false,
   "singleThreaded": false,
-  "configuration": [{
-    "id": 57652,
-    "key": "crmSource",
-    "name": "crmSource",
-    "type": "elementInstance",
-    "required": true
-  }, {
-    "id": 57653,
-    "key": "object",
-    "name": "object",
-    "type": "value",
-    "required": true
-  }, {
-    "id": 57654,
-    "key": "target",
-    "name": "target",
-    "type": "elementInstance",
-    "required": true
-  }]
+  "configuration": [
+      {
+          "id": 80996,
+          "key": "crmSource",
+          "name": "crmSource",
+          "type": "elementInstance",
+          "required": true
+      },
+      {
+          "id": 80997,
+          "key": "object",
+          "name": "object",
+          "type": "value",
+          "required": true
+      },
+      {
+          "id": 80998,
+          "key": "target",
+          "name": "target",
+          "type": "elementInstance",
+          "required": true
+      }
+  ]
 }
