@@ -3,7 +3,7 @@
     "id": 41887,
     "name": "BulkStep2",
     "description": "Receives the data stream from Step 1 and sends to Act-On",
-    "debugLoggingExpires": "2020-11-13T23:52:04Z",
+    "debugLoggingExpires": "2020-11-16T20:31:40Z",
     "userId": 62973,
     "accountId": 48093,
     "createdDate": "2020-11-13T15:52:04Z",
@@ -33,22 +33,34 @@
         }
       },
       {
-        "id": 445681,
+        "id": 445753,
         "onSuccess": [],
         "onFailure": [],
+        "name": "sendFailureEmail",
+        "type": "script",
+        "properties": {
+          "body": "notify.email(config.email, `Error for Bulk Job with Id ${trigger.args.id}`, `The Bulk Upload Job with Id ${trigger.args.id} failed with status code: ${steps.streamBulkResults.download.response.code}.`);\ndone({ success: true });"
+        }
+      },
+      {
+        "id": 445681,
+        "onSuccess": [],
+        "onFailure": [
+          "sendFailureEmail"
+        ],
         "name": "streamBulkResults",
         "type": "elementRequestStream",
         "properties": {
-          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
-          "uploadMethod": "POST",
-          "uploadFormData": "",
-          "downloadMethod": "GET",
-          "downloadElementInstanceId": "${config.crm.source}",
           "uploadFormDataName": "",
-          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "downloadMethod": "GET",
+          "uploadHeaders": "${steps.generateMetadata.uploadHeaders}",
           "uploadApi": "/bulk/${config.object}",
+          "downloadApi": "/bulk/${trigger.args.id}/${config.object}",
+          "downloadElementInstanceId": "${config.crm.source}",
           "uploadElementInstanceId": "${config.target}",
-          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}"
+          "uploadMethod": "POST",
+          "downloadHeaders": "${steps.generateMetadata.downloadHeaders}",
+          "uploadFormData": ""
         }
       }
     ],
@@ -76,6 +88,14 @@
         "name": "CRM Source",
         "type": "elementInstance",
         "description": "The CRM source instance",
+        "required": true
+      },
+      {
+        "id": 82556,
+        "key": "email",
+        "name": "email",
+        "type": "value",
+        "description": "Add an email to receive notification at in case of a failed. ",
         "required": true
       },
       {

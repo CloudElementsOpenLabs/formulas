@@ -69,9 +69,10 @@ Follow the steps below to finish configuring your bulk Formulas.
     * Make sure you remember which Element you chose for CRM source. You will need to choose the same one in the next Formula instance you create for Bulk Step 1.
     * For `object` under `Values`, enter: `MyContact` (or the name of your VDR).
     * For `thirdFormulaInstanceId`, enter the ID you captured from Step 2 when creating the Bulk Step 3 Formula.
+    * Enter the email you would like to be notified at in case of an upload error.
     * Capture the ID of newly the created Formula instance for Bulk Step 2. You will need to give the Bulk Step 1 Formula the instance ID for the second Formula. This will let the bulk job callback trigger the correct Formula when the bulk job is completed. 
 4. Create a Formula instance for Bulk Step 1, using the same Element for CRM source as you chose before. Under `Values`:
-    * For `object`, enter `MyContact` (or the name of your VDR)..
+    * For `object`, enter `MyContact` (or the name of your VDR).
     * Enter the Formula instance Id you captured from BulkStep2.
 5. Go to your BulkStep1 Formula and open it, then select the `TRY IT OUT` button. Choose the instance you created before and click `RUN`.
 6. Go back to the main Formulas UI and find your BulkStep2 Formula. Click `EXECUTIONS` (appears on hover).
