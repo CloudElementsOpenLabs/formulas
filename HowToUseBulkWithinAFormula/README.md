@@ -1,7 +1,7 @@
 # Using Bulk in your Formulas
-Working with bulk a Formula can be challenging. Bulk by nature is an asynchronous job, while Formulas are a synchronous procedure. The trick to getting them to work together is webhooks.
+Working with bulk a Formula can be challenging. Bulk by nature is an asynchronous job, while Formulas are a synchronous procedure. The trick to getting them to work together is bulk job callbacks.
 
-In this example, we will use three Formulas--one creates the bulk job, specifying who to notify when the job completes, one which recieves the 'job done' notification and consumes the results, and lastly one which will catch any upload errors and notify you in they occur. This configuration leverages our `Elements-Async-Callback-Url` header.
+In this example, we will use three Formulas--one creates the bulk job, specifying who to notify when the job completes, one which recieves the 'job done' notification and consumes the results and notifies you in the case that they occur. This configuration leverages our `Elements-Async-Callback-Url` header.
 
 ### IMPORTANT NOTES:
 
@@ -64,15 +64,14 @@ Follow the steps below to finish configuring your bulk Formulas.
     * If using the example VDR for **Example 2**, you will need to authenticate an Element instance of one of the above (`Salesforce` or `Sugar CRM`) as well as an instance of `Google Drive`. You will use one of either `Salesforce` or `Sugar CRM` as a source Element, and a Docs Hub Element (Google Drive) as the destination (target) when creating your Formula instance below.
 2. Create a Formula instance for Bulk Step 3.
     * Enter the email you would like to be notified at in case of an upload error.
-    * Capture the ID of the created Formula instance. You will need to give the Bulk Step 2 Formula the instance ID for the third Formula. This will let the webhook trigger the correct Formula if the bulk job runs into an error. 
+    * Capture the ID of the created Formula instance. You will need to give the Bulk Step 2 Formula the instance ID for the third Formula. This will let the bulk job callback trigger the correct Formula if the bulk job runs into an error. 
 3. Create a Formula instance for Bulk Step 2.
     * Make sure you remember which Element you chose for CRM source. You will need to choose the same one in the next Formula instance you create for Bulk Step 1.
     * For `object` under `Values`, enter: `MyContact` (or the name of your VDR).
     * For `thirdFormulaInstanceId`, enter the ID you captured from Step 2 when creating the Bulk Step 3 Formula.
-    * Capture the ID of newly the created Formula instance for Bulk Step 2. You will need to give the Bulk Step 1 Formula the instance ID for the second Formula. This will let the webhook trigger the correct Formula when the bulk job is completed. 
+    * Capture the ID of newly the created Formula instance for Bulk Step 2. You will need to give the Bulk Step 1 Formula the instance ID for the second Formula. This will let the bulk job callback trigger the correct Formula when the bulk job is completed. 
 4. Create a Formula instance for Bulk Step 1, using the same Element for CRM source as you chose before. Under `Values`:
-    * For `object`, enter `MyContact` (or the name of your VDR).
-    * Enter a cron job schedule (`0 0/10 0 ? * * *` will poll every 10 minutes).
+    * For `object`, enter `MyContact` (or the name of your VDR)..
     * Enter the Formula instance Id you captured from BulkStep2.
 5. Go to your BulkStep1 Formula and open it, then select the `TRY IT OUT` button. Choose the instance you created before and click `RUN`.
 6. Go back to the main Formulas UI and find your BulkStep2 Formula. Click `EXECUTIONS` (appears on hover).
