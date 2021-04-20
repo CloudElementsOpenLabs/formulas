@@ -1,0 +1,97 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "This is the QBO element that you will be retrieving invoices from. ",
+            "key": "QBOInstance",
+            "name": "QBOInstance",
+            "required": true,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-11-14T02:55:23Z",
+    "engine": "v3",
+    "id": 41889,
+    "name": "nestedLoops",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "makePaginationQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getInvoices"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getInvoices",
+            "onFailure": [],
+            "onSuccess": [
+                "loopThroughInvoices"
+            ],
+            "properties": {
+                "api": "/invoices",
+                "elementInstanceId": "${config.QBOInstance}",
+                "method": "GET",
+                "query": "${steps.makePaginationQuery.pagination}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "loopThroughInvoices",
+            "onFailure": [
+                "gracefulExit"
+            ],
+            "onSuccess": [
+                "loopThroughInvoiceLines"
+            ],
+            "properties": {
+                "list": "${steps.getInvoices.response.body}"
+            },
+            "type": "loop"
+        },
+        {
+            "name": "loopThroughInvoiceLines",
+            "onFailure": [
+                "loopThroughInvoices"
+            ],
+            "onSuccess": [
+                "aggregator"
+            ],
+            "properties": {
+                "list": "${steps.loopThroughInvoices.entry.line}"
+            },
+            "type": "loop"
+        },
+        {
+            "name": "aggregator",
+            "onFailure": [],
+            "onSuccess": [
+                "loopThroughInvoiceLines"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "gracefulExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "makePaginationQuery"
+            ],
+            "properties": {},
+            "type": "manual"
+        }
+    ]
+}
