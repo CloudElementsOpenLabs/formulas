@@ -1,0 +1,89 @@
+{
+  "id": 57090,
+  "level": "organization",
+  "elementId": 40,
+  "objectName": "expenseInvoice",
+  "vendorName": "bill",
+  "startDate": "2019-08-16 21:05:53.514004",
+  "fields": [
+    {
+      "type": "string",
+      "path": "currency",
+      "level": "organization",
+      "vendorPath": "currencyRef.value"
+    },
+    {
+      "type": "string",
+      "path": "dueDate",
+      "level": "organization",
+      "vendorPath": "dueDate"
+    },
+    {
+      "type": "string",
+      "path": "entity",
+      "level": "organization",
+      "vendorPath": "vendorRef.value",
+      "configuration": [
+        {
+          "type": "passThrough",
+          "properties": {
+            "toVendor": true,
+            "fromVendor": true
+          }
+        },
+        {
+          "type": "defaultValue",
+          "properties": {
+            "toVendor": "1"
+          }
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "path": "id",
+      "level": "organization",
+      "vendorPath": "id"
+    },
+    {
+      "type": "string",
+      "path": "item[*].accountCode",
+      "level": "organization",
+      "vendorPath": "line[*].detailType"
+    },
+    {
+      "type": "string",
+      "path": "item[*].amount",
+      "level": "organization",
+      "vendorPath": "line[*].amount"
+    },
+    {
+      "type": "string",
+      "path": "item[*].expenseType",
+      "level": "organization",
+      "vendorPath": "line[*].accountBasedExpenseLineDetail.accountRef.value"
+    },
+    {
+      "type": "string",
+      "path": "transactionDate",
+      "level": "organization",
+      "vendorPath": "txnDate"
+    }
+  ],
+  "configuration": [
+    {
+      "type": "inherit"
+    },
+    {
+      "type": "addToDocumentation"
+    },
+    {
+      "type": "passThrough",
+      "properties": {
+        "fromVendor": false,
+        "toVendor": false
+      }
+    }
+  ],
+  "isLegacy": false
+}

@@ -1,0 +1,87 @@
+{
+  "id": 99683,
+  "objectName": "expenseInvoice",
+  "fields": [
+    {
+      "type": "string",
+      "path": "item[*].amount",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "dueDate",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].location",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "entity",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "transactionDate",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].description",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "id",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "shippingCost",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].id",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].expenseType",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "customform.internalId",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "currency",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "subsidiary",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].quantity",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "item[*].accountCode",
+      "displayName": ""
+    },
+    {
+      "type": "string",
+      "path": "message",
+      "displayName": ""
+    }
+  ],
+  "level": "organization"
+}
